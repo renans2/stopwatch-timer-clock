@@ -67,6 +67,22 @@ function App() {
         setToken(setInterval(() => setStopwatch(p => p + 1), 1000));
     }
 
+    const setTimerInterval = () => {
+        setToken(setInterval(() =>  {
+            console.log(timer);
+            setTimer(p => p - 1);
+        }, 1000));
+    }
+
+    const toggleTimer = () => {
+        if(token === undefined ){
+            setTimer(3600 * timerHours + 60 * timerMinutes + timerSeconds);
+            setTimerInterval();
+        } else {
+            clearToken();   
+        }
+    }
+
     const clearToken = () => {
         clearInterval(token);
         setToken(undefined);
@@ -75,39 +91,24 @@ function App() {
     const handleChangeTimer = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputName = e.target.name;
         const inputValue = parseInt(e.target.value);
+        console.log(inputValue);
 
         switch (inputName) {
-            case "hours": {
+            case "hours":
                 setTimerHours(inputValue > 99 ? 99 : inputValue);
-                e.target.value = timerHours.toString();
                 break;
-            }
-                
         
-            case "minutes": {
+            case "minutes":
                 setTimerMinutes(inputValue > 59 ? 59 : inputValue);
-                console.log(timerMinutes);
-                e.target.value = timerMinutes.toString();
                 break;
-            }
 
-            case "seconds": {
+            case "seconds":
                 setTimerSeconds(inputValue > 59 ? 59 : inputValue);
-                console.log(timerSeconds);
-                e.target.value = timerSeconds.toString();
                 break;
-            }
             
             default:
                 break;
         }
-        
-        const hours = parseInt(e.target.value);
-
-        if(hours > 99) {
-
-        }
-        console.log();
     }
 
     return (
@@ -138,7 +139,6 @@ function App() {
                         {(Math.floor(stopwatch/60) % 60).toString().padStart(2, "0")}
                         :
                         {(stopwatch % 60).toString().padStart(2, "0")}
-
                     </span>
                     <button onClick={toggleStopwatch}>
                         {
@@ -155,12 +155,30 @@ function App() {
                 mode === "timer" 
                 &&
                 <>
-                    <input onChange={handleChangeTimer} name="hours"   type="number" min="0" max="99" />
-                    <input onChange={handleChangeTimer} name="minutes" type="number" min="0" max="59" />
-                    <input onChange={handleChangeTimer} name="seconds" type="number" min="0" max="59" />
-                    <span>
-                        {stopwatch}
-                    </span>
+                    {
+                        token === undefined 
+                        ?
+                        <>
+                            <input value={timerHours.toString()} onChange={handleChangeTimer} name="hours" type="number" min="0" max="99" />
+                            <input value={timerMinutes.toString()} onChange={handleChangeTimer} name="minutes" type="number" min="0" max="59" />
+                            <input value={timerSeconds.toString()} onChange={handleChangeTimer} name="seconds" type="number" min="0" max="59" />
+                        </>
+                        :
+                        <span>
+                            {Math.floor(timer/3600).toString().padStart(2, "0")}
+                            :
+                            {(Math.floor(timer/60) % 60).toString().padStart(2, "0")}
+                            :
+                            {(timer % 60).toString().padStart(2, "0")}
+                        </span>
+                    }
+                    <button onClick={toggleTimer}>
+                        {
+                            token === undefined
+                            ? "Start"
+                            : "Stop"
+                        }
+                    </button>
                 </>
             }
         </>
