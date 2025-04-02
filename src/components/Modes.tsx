@@ -1,7 +1,11 @@
-import { getContext, Mode } from "../App";
+import { useAppContextHook } from "../context/AppContext";
 
-export default function Modes({ mode }: {mode: Mode}) {
-    const { changeToStopwatch, changeToTimer, changeToClock } = getContext();
+export default function Modes() {
+    const { mode, 
+            changeToStopwatch, 
+            changeToTimer, 
+            changeToClock 
+    } = useAppContextHook();
 
     return (
         <>

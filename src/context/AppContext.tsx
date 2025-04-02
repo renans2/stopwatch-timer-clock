@@ -20,12 +20,20 @@ interface AppContextType {
     setStopwatchInterval: () => void;
     setTimerInterval: () => void;
     clearToken: () => void;
+    toggleTimer: () => void;
     handleChangeTimer: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export const useAppContext = () => useContext(AppContext);
+export const useAppContextHook = () => {
+    const context = useContext(AppContext);
+
+    if(!context)
+        throw new Error("Error");
+        
+    return context;
+}
 
 export default function AppContextProvider({ children }: { children: ReactNode }) {
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -37,7 +45,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     const [timerMinutes, setTimerMinutes] = useState(0);
     const [timerSeconds, setTimerSeconds] = useState(0);
 
-    const changeToClock = () => {
+    const changeToClock: () => void = () => {
         setMode("clock");
 
         if(token !== undefined)
@@ -148,6 +156,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
                                       setClockInterval,
                                       setStopwatchInterval,
                                       setTimerInterval,
+                                      toggleTimer,
                                       clearToken,
                                       handleChangeTimer }}>
             {children}
