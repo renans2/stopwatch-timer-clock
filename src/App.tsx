@@ -1,17 +1,9 @@
 import { useEffect } from "react"
-import styled from "styled-components";
 import { useAppContextHook } from "./context/AppContext";
 import Modes from "./components/Modes";
 import Display from "./components/Display";
 import ControlButtons from "./components/ControlButtons";
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 0 20%;
-    background-color: gray;
-    text-align: center;
-`;
+import { Container } from "./components/StyledComponents";
 
 function App() {
     const { changeToClock } = useAppContextHook();

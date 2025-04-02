@@ -1,4 +1,5 @@
 import { useAppContextHook } from "../context/AppContext";
+import { ModesStyled } from "./StyledComponents";
 
 export default function Modes() {
     const { mode, 
@@ -8,10 +9,10 @@ export default function Modes() {
     } = useAppContextHook();
 
     return (
-        <>
+        <ModesStyled>
             { mode !== "stopwatch" && <button onClick={changeToStopwatch}>stopwatch</button> }
             { mode !== "timer" && <button onClick={changeToTimer}>timer</button> }
             { mode !== "clock" && <button onClick={changeToClock}>clock</button> }
-        </>
+        </ModesStyled>
     );
 }
