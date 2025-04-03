@@ -10,9 +10,14 @@ export default function Modes() {
 
     return (
         <ModesStyled>
-            { mode !== "stopwatch" && <button onClick={changeToStopwatch}>stopwatch</button> }
-            { mode !== "timer" && <button onClick={changeToTimer}>timer</button> }
-            { mode !== "clock" && <button onClick={changeToClock}>clock</button> }
+            <button onClick={changeToStopwatch} 
+                    disabled={mode === "stopwatch"}>Stopwatch</button>
+            
+            <button onClick={changeToTimer} 
+                    disabled={mode === "timer"}>Timer</button>
+            
+            <button onClick={changeToClock} 
+                    disabled={mode === "clock"}>Clock</button>
         </ModesStyled>
     );
 }
