@@ -1,4 +1,5 @@
 import { useAppContextHook } from "../context/AppContext";
+import { DisplayStyled } from "./StyledComponents";
 
 export default function Display() {
     const { mode, 
@@ -9,7 +10,7 @@ export default function Display() {
     } = useAppContextHook();
     
     return (
-        <>
+        <DisplayStyled>
             {
                 mode === "clock" 
                 &&
@@ -47,6 +48,6 @@ export default function Display() {
                     {(timer % 60).toString().padStart(2, "0")}
                 </span>
             }
-        </>
+        </DisplayStyled>
     );
 }
