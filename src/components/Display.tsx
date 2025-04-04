@@ -9,43 +9,23 @@ export default function Display() {
             currentTime
     } = useAppContextHook();
     
-    return (
+    const displayVal = mode === "clock"
+                             ? currentTime
+                             : mode === "stopwatch"
+                                     ? stopwatch
+                                     : timer;
+
+    return (        
         <DisplayStyled>
             {
-                mode === "clock" 
+                ((mode === "timer" && token !== undefined) || (mode !== "timer"))
                 &&
                 <span>
-                    {currentTime.getHours().toString().padStart(2, "0")}
+                    {Math.floor(displayVal/3600).toString().padStart(2, "0")}
                     :
-                    {currentTime.getMinutes().toString().padStart(2, "0")}
+                    {(Math.floor(displayVal/60) % 60).toString().padStart(2, "0")}
                     :
-                    {currentTime.getSeconds().toString().padStart(2, "0")}
-                </span>
-            }
-
-            {
-                mode === "stopwatch" 
-                &&
-                <span>
-                    {Math.floor(stopwatch/3600).toString().padStart(2, "0")}
-                    :
-                    {(Math.floor(stopwatch/60) % 60).toString().padStart(2, "0")}
-                    :
-                    {(stopwatch % 60).toString().padStart(2, "0")}
-                </span>
-            }
-
-            {
-                mode === "timer" 
-                && 
-                token !== undefined
-                &&
-                <span>
-                    {Math.floor(timer/3600).toString().padStart(2, "0")}
-                    :
-                    {(Math.floor(timer/60) % 60).toString().padStart(2, "0")}
-                    :
-                    {(timer % 60).toString().padStart(2, "0")}
+                    {(displayVal % 60).toString().padStart(2, "0")}
                 </span>
             }
         </DisplayStyled>

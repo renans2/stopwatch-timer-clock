@@ -1,12 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-export type Mode = "stopwatch" | "timer" | "clock";
+export type Mode = "stopwatch" | "timer" | "clock" | undefined;
 
 interface AppContextType {
-    currentTime: Date;
+    currentTime: number;
     stopwatch: number;
     timer: number;
-    token: number;
+    token: number | undefined;
     mode: Mode;
     timerHours: number;
     timerMinutes: number;
@@ -36,14 +36,18 @@ export const useAppContextHook = () => {
 }
 
 export default function AppContextProvider({ children }: { children: ReactNode }) {
-    const [currentTime, setCurrentTime] = useState(new Date());
+    const [currentTime, setCurrentTime] = useState(0);
     const [stopwatch, setStopwatch] = useState(0);
     const [timer, setTimer] = useState(0);
-    const [token, setToken] = useState<any>(undefined);
-    const [mode, setMode] = useState<Mode>("clock");
+    const [token, setToken] = useState<number | undefined>(undefined);
+    const [mode, setMode] = useState<Mode>(undefined);
     const [timerHours, setTimerHours] = useState(0);
     const [timerMinutes, setTimerMinutes] = useState(0);
     const [timerSeconds, setTimerSeconds] = useState(0);
+
+    useEffect(() => {
+        changeToClock();
+    }, []);
 
     const changeToClock: () => void = () => {
         setMode("clock");
@@ -51,7 +55,12 @@ export default function AppContextProvider({ children }: { children: ReactNode }
         if(token !== undefined)
             clearToken();
 
-        setCurrentTime(new Date());
+        const time = new Date();
+        const timeInSeconds = 3600 * time.getHours() + 
+                              60 * time.getMinutes() + 
+                              time.getSeconds();
+        
+        setCurrentTime(timeInSeconds);
         setClockInterval();
     }
 
@@ -88,7 +97,16 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     }
 
     const setClockInterval = () => {
-        setToken(setInterval(() => setCurrentTime(new Date())));
+        setToken(
+            setInterval(() => {
+                setCurrentTime(p => {
+                    if (p + 1 === 24 * 3600)
+                        return 0
+
+                    return p + 1;
+                });
+            }, 1000)
+        );
     }
 
     const setStopwatchInterval = () => {
