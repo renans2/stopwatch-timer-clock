@@ -3,9 +3,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 export type Mode = "stopwatch" | "timer" | "clock" | undefined;
 
 interface AppContextType {
-    currentTime: number;
-    stopwatch: number;
-    timer: number;
+    displayTime: number;
     token: number | undefined;
     mode: Mode;
     timerHours: number;
@@ -36,9 +34,7 @@ export const useAppContextHook = () => {
 }
 
 export default function AppContextProvider({ children }: { children: ReactNode }) {
-    const [currentTime, setCurrentTime] = useState(0);
-    const [stopwatch, setStopwatch] = useState(0);
-    const [timer, setTimer] = useState(0);
+    const [displayTime, setDisplayTime] = useState(0);
     const [token, setToken] = useState<number | undefined>(undefined);
     const [mode, setMode] = useState<Mode>(undefined);
     const [timerHours, setTimerHours] = useState(0);
@@ -60,7 +56,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
                               60 * time.getMinutes() + 
                               time.getSeconds();
         
-        setCurrentTime(timeInSeconds);
+        setDisplayTime(timeInSeconds);
         setClockInterval();
     }
 
@@ -70,7 +66,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
         if(token !== undefined)
             clearToken();
 
-        setStopwatch(0);
+        setDisplayTime(0);
     }
 
     const changeToTimer = () => {
@@ -87,7 +83,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     }
 
     const resetStopwatch = () => {
-        setStopwatch(0);
+        setDisplayTime(0);
 
         if(token !== undefined) {
             clearToken();
@@ -99,7 +95,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     const setClockInterval = () => {
         setToken(
             setInterval(() => {
-                setCurrentTime(p => {
+                setDisplayTime(p => {
                     if (p + 1 === 24 * 3600)
                         return 0
 
@@ -110,19 +106,27 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     }
 
     const setStopwatchInterval = () => {
-        setToken(setInterval(() => setStopwatch(p => p + 1), 1000));
+        setToken(setInterval(() => setDisplayTime(p => p + 1), 1000));
     }
 
     const setTimerInterval = () => {
         setToken(setInterval(() =>  {
-            console.log(timer);
-            setTimer(p => p - 1);
+            setDisplayTime(p => {
+                if (p === 0) {
+                    // clearToken();
+                    // alert("Time is up!!!");
+                    return 0;
+                }
+
+                return p - 1;
+            });
+            
         }, 1000));
     }
 
     const toggleTimer = () => {
         if(token === undefined ){
-            setTimer(3600 * timerHours + 60 * timerMinutes + timerSeconds);
+            setDisplayTime(3600 * timerHours + 60 * timerMinutes + timerSeconds);
             setTimerInterval();
         } else {
             clearToken();   
@@ -137,7 +141,6 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     const handleChangeTimer = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputName = e.target.name;
         const inputValue = parseInt(e.target.value);
-        console.log(inputValue);
 
         switch (inputName) {
             case "hours":
@@ -158,9 +161,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     }
 
     return(
-        <AppContext.Provider value={{ currentTime,
-                                      stopwatch,
-                                      timer,
+        <AppContext.Provider value={{ displayTime,
                                       token,
                                       mode,
                                       timerHours,
