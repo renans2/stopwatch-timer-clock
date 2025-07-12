@@ -1,28 +1,26 @@
 import { useState } from "react";
-import { useAppContextHook } from "../../context/AppContext";
-import { DisplayStyled } from "../StyledComponents";
+import TimerSelector from "./TimerSelector";
 
 export default function Timer() {
     const [counter, setCounter] = useState(0);
-
-    const { mode, 
-            token,
-            displayTime
-    } = useAppContextHook();
+    const [selecting, setSelecting] = useState(true);
 
     return (        
-        <DisplayStyled>
-            {
-                ((mode === "timer" && token !== undefined) || (mode !== "timer"))
-                &&
-                <>
-                    {Math.floor(displayTime/3600).toString().padStart(2, "0")}
-                    :
-                    {(Math.floor(displayTime/60) % 60).toString().padStart(2, "0")}
-                    :
-                    {(displayTime % 60).toString().padStart(2, "0")}
-                </>
-            }
-        </DisplayStyled>
+
+        <TimerSelector setCounter={setCounter} />
+
+        // <DisplayStyled>
+        //     {
+        //         ((mode === "timer" && token !== undefined) || (mode !== "timer"))
+        //         &&
+        //         <>
+        //             {Math.floor(displayTime/3600).toString().padStart(2, "0")}
+        //             :
+        //             {(Math.floor(displayTime/60) % 60).toString().padStart(2, "0")}
+        //             :
+        //             {(displayTime % 60).toString().padStart(2, "0")}
+        //         </>
+        //     }
+        // </DisplayStyled>
     );
 }

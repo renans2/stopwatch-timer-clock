@@ -28,6 +28,29 @@ export const ModesStyled = styled.div`
     margin-bottom: 70px;
 `;
 
+export const TimerSelectorButtonsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+`;
+
+export const TimerSelectorButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    background-color: #FF690C;
+    color: white;
+    border: none;
+
+    &:disabled {
+        background-color: #8a3b0aff
+    }
+`;
+
 export const ModeButtonStyled = styled.button`
     padding: 7px 40px;
     color: #C2C2C2;
