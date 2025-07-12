@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useAppContextHook } from "../../context/AppContext";
 import { DisplayStyled } from "../StyledComponents";
 
-export default function TimerDisplay() {
+export default function Timer() {
+    const [counter, setCounter] = useState(0);
+
     const { mode, 
             token,
             displayTime

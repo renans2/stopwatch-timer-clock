@@ -1,13 +1,16 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Modes from "./components/Modes";
 import { AppStyled } from "./components/StyledComponents";
-import { useAppContextHook } from "./context/AppContext";
-import StopwatchDisplay from "./components/displays/StopwatchDisplay";
-import TimerDisplay from "./components/displays/TimerDisplay";
-import DefaultTimeDisplay from "./components/displays/DefaultTimeDisplay";
+import DefaultTimeDisplay from "./components/displays/TimeDisplay";
+import Stopwatch from "./components/displays/Stopwatch";
+import Timer from "./components/displays/Timer";
+import Clock from "./components/displays/Clock";
+
+export type Mode = "stopwatch" | "timer" | "clock";
 
 function App() {
-    const { mode } = useAppContextHook();
+    const [mode, setMode] = useState<Mode>("clock");
+    const [running, setRunning] = useState(false);
 
     useEffect(() => {
         document.title = "Stopwatch-Timer-Clock";
@@ -16,11 +19,14 @@ function App() {
     const renderModeDisplay = () => {
         switch (mode) {
             case "clock":
-                return <DefaultTimeDisplay />;
+                return <Clock />;
+
             case "stopwatch":
-                return <StopwatchDisplay />;
+                return <Stopwatch />;
+
             case "timer":
-                return <TimerDisplay />;
+                return <Timer />;
+
             default:
                 return null;
         }
@@ -28,7 +34,7 @@ function App() {
 
     return (
         <AppStyled>
-            <Modes />
+            <Modes mode={mode} setMode={setMode} />
             {renderModeDisplay()}
         </AppStyled>
     );

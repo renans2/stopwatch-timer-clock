@@ -11,6 +11,7 @@ export const Container = styled.div`
 `;
 
 export const AppStyled = styled.div`
+    padding: 20px;
     background-color: #000000;
     min-height: 100vh;
     min-width: 100vw;
@@ -24,6 +25,7 @@ export const ModesStyled = styled.div`
     display: flex;
     justify-content: space-evenly;
     gap: 10px;
+    margin-bottom: 70px;
 `;
 
 export const ModeButtonStyled = styled.button`
@@ -112,10 +114,10 @@ export const DisplayStyled = styled.span`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 10rem;
+    font-size: 8rem;
     font-weight: 500;
     border-radius: 49px;
-    padding: 0px 30px;
+    padding: 0px 75px;
     color: #C2C2C2;
     background-color: #151515;
 

@@ -1,32 +1,34 @@
-import { useAppContextHook } from "../context/AppContext";
+import { Dispatch, SetStateAction } from "react";
+import { Mode } from "../App";
 import { ModesStyled, ModeButtonStyled } from "./StyledComponents";
 
-export default function Modes() {
-    const { 
-        mode, 
-        changeToStopwatch, 
-        changeToTimer, 
-        changeToClock 
-    } = useAppContextHook();
+type ModesProps = {
+    mode: string;
+    setMode: Dispatch<SetStateAction<Mode>>;
+}
 
+export default function Modes({ 
+    mode, 
+    setMode 
+}: ModesProps) {
     return (
         <ModesStyled>
             <ModeButtonStyled 
-                onClick={changeToClock} 
+                onClick={() => setMode("clock")} 
                 disabled={mode === "clock"}
             >
                 Clock
             </ModeButtonStyled>
 
             <ModeButtonStyled 
-                onClick={changeToStopwatch} 
+                onClick={() => setMode("stopwatch")} 
                 disabled={mode === "stopwatch"}
             >
                 Stopwatch
             </ModeButtonStyled>
             
             <ModeButtonStyled 
-                onClick={changeToTimer} 
+                onClick={() => setMode("timer")} 
                 disabled={mode === "timer"}
             >
                 Timer
