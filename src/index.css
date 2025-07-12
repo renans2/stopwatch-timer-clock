@@ -6,18 +6,3 @@
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
-
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button {
-    padding: 20px;
-}
-
-input {
-    padding: 20px;
-}

@@ -1,7 +1,7 @@
-import { useAppContextHook } from "../context/AppContext";
-import { DisplayStyled } from "./StyledComponents";
+import { useAppContextHook } from "../../context/AppContext";
+import { DisplayStyled } from "../StyledComponents";
 
-export default function Display() {
+export default function TimerDisplay() {
     const { mode, 
             token,
             displayTime

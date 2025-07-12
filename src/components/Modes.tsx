@@ -1,24 +1,36 @@
-import { Clock, Hourglass, Timer } from "lucide-react";
 import { useAppContextHook } from "../context/AppContext";
-import { ModesStyled } from "./StyledComponents";
+import { ModesStyled, ModeButtonStyled } from "./StyledComponents";
 
 export default function Modes() {
-    const { mode, 
-            changeToStopwatch, 
-            changeToTimer, 
-            changeToClock 
+    const { 
+        mode, 
+        changeToStopwatch, 
+        changeToTimer, 
+        changeToClock 
     } = useAppContextHook();
 
     return (
         <ModesStyled>
-            <button onClick={changeToClock} 
-                    disabled={mode === "clock"}><Clock /></button>
+            <ModeButtonStyled 
+                onClick={changeToClock} 
+                disabled={mode === "clock"}
+            >
+                Clock
+            </ModeButtonStyled>
 
-            <button onClick={changeToStopwatch} 
-                    disabled={mode === "stopwatch"}><Timer /></button>
+            <ModeButtonStyled 
+                onClick={changeToStopwatch} 
+                disabled={mode === "stopwatch"}
+            >
+                Stopwatch
+            </ModeButtonStyled>
             
-            <button onClick={changeToTimer} 
-                    disabled={mode === "timer"}><Hourglass /></button>
+            <ModeButtonStyled 
+                onClick={changeToTimer} 
+                disabled={mode === "timer"}
+            >
+                Timer
+            </ModeButtonStyled>
         </ModesStyled>
     );
 }

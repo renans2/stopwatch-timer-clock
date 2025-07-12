@@ -9,6 +9,7 @@ interface AppContextType {
     timerHours: number;
     timerMinutes: number;
     timerSeconds: number;
+    running: boolean;
     changeToClock: () => void;
     changeToStopwatch: () => void;
     changeToTimer: () => void;
@@ -40,12 +41,15 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     const [timerHours, setTimerHours] = useState(0);
     const [timerMinutes, setTimerMinutes] = useState(0);
     const [timerSeconds, setTimerSeconds] = useState(0);
+    const [running, setRunning] = useState(false);
 
     useEffect(() => {
         changeToClock();
     }, []);
 
     const changeToClock: () => void = () => {
+        console.log("clock");
+        
         setMode("clock");
 
         if(token !== undefined)
@@ -61,6 +65,8 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     }
 
     const changeToStopwatch = () => {
+        console.log("stopwatch");
+
         setMode("stopwatch");
 
         if(token !== undefined)
@@ -70,6 +76,8 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     }
 
     const changeToTimer = () => {
+        console.log("timer");
+
         setMode("timer");
 
         if(token !== undefined)
@@ -107,6 +115,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
 
     const setStopwatchInterval = () => {
         setToken(setInterval(() => setDisplayTime(p => p + 1), 1000));
+        setRunning(true);
     }
 
     const setTimerInterval = () => {
@@ -136,6 +145,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
     const clearToken = () => {
         clearInterval(token);
         setToken(undefined);
+        setRunning(false);
     }
 
     const handleChangeTimer = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -167,6 +177,7 @@ export default function AppContextProvider({ children }: { children: ReactNode }
                                       timerHours,
                                       timerMinutes,
                                       timerSeconds,
+                                      running,
                                       changeToClock,
                                       changeToStopwatch,
                                       changeToTimer,
