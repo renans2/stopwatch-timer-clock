@@ -72,11 +72,9 @@ export const ModeButtonStyled = styled.button`
     }
 `;
 
-interface ControlButtonProps {
+export const ControlButtonStyled = styled.button<{
     $variant: 'pause' | 'start' | 'reset';
-}
-
-export const ControlButtonStyled = styled.button<ControlButtonProps>`
+}>`
     padding: 7px 20px;
     border-radius: 20px;
     border: none;

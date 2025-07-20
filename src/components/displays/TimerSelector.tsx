@@ -3,19 +3,32 @@ import TimerSelectorDisplay from "./TimerSelectorDisplay";
 import { TimerSelectorButton, TimerSelectorButtonsContainer } from "../StyledComponents";
 import { Minus, Plus } from "lucide-react";
 
-type TimerSelectorProps = {
-    setCounter: Dispatch<SetStateAction<number>>
-}
-
 type InputAction = "+" | "-";
 
+type TimerSelectorProps = {
+    setCounter: Dispatch<SetStateAction<number>>,
+    setSelecting: Dispatch<SetStateAction<boolean>>,
+    startTimer: () => void,
+}
+
 export default function TimerSelector({
-    setCounter
+    setCounter,
+    setSelecting,
+    startTimer,
 }: TimerSelectorProps) {
     const [inputSec, setInputSec] = useState(0);
     const [inputMin, setInputMin] = useState(0);
     const [inputHours, setInputHours] = useState(0);
-    const [selecting, setSelecting] = useState(true);
+
+    const handleStartTimer = () => {
+        setCounter(
+            inputHours * 60 * 60 +
+            inputMin * 60 +
+            inputSec
+        );
+        setSelecting(false);
+        startTimer();
+    }
 
     const changeInputSeconds = (action: InputAction) => {
         if(action === "+") {
@@ -64,13 +77,19 @@ export default function TimerSelector({
                 <TimerSelectorButton onClick={() => changeInputSeconds("+")}><Plus size={64} /></TimerSelectorButton>
             </TimerSelectorButtonsContainer>
 
-            <TimerSelectorDisplay seconds={inputSec} minutes={inputMin} hours={inputHours} />
+            <TimerSelectorDisplay 
+                seconds={inputSec} 
+                minutes={inputMin} 
+                hours={inputHours}
+            />
 
             <TimerSelectorButtonsContainer>
                 <TimerSelectorButton onClick={() => changeInputHours("-")} disabled={inputHours === 0}><Minus size={64} /></TimerSelectorButton>
                 <TimerSelectorButton onClick={() => changeInputMinutes("-")}><Minus size={64} /></TimerSelectorButton>
                 <TimerSelectorButton onClick={() => changeInputSeconds("-")}><Minus size={64} /></TimerSelectorButton>
             </TimerSelectorButtonsContainer>
+
+            <button onClick={handleStartTimer}>start timer</button>
         </>
     );
 }
