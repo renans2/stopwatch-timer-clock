@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
-import Modes from "./components/Modes";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme/theme";
 import { AppStyled } from "./components/StyledComponents";
+import Modes from "./components/Modes";
 import DefaultTimeDisplay from "./components/displays/TimeDisplay";
 import Stopwatch from "./components/displays/Stopwatch";
 import Timer from "./components/displays/Timer";
 import Clock from "./components/displays/Clock";
+import GlobalStyle from "./styles/GlobalStyle";
 
 export type Mode = "stopwatch" | "timer" | "clock";
 
@@ -33,10 +36,13 @@ function App() {
     };
 
     return (
-        <AppStyled>
-            <Modes mode={mode} setMode={setMode} />
-            {renderModeDisplay()}
-        </AppStyled>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <AppStyled>
+                <Modes mode={mode} setMode={setMode} />
+                {renderModeDisplay()}
+            </AppStyled>
+        </ThemeProvider>
     );
 }
 
