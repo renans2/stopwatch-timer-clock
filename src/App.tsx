@@ -40,10 +40,13 @@ function App() {
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <GlobalStyle />
             <AppStyled>
-                <Modes mode={mode} setMode={setMode} />
+                <Modes 
+                    mode={mode} 
+                    setMode={setMode} 
+                    isDarkTheme={isDarkTheme}
+                    setIsDarkTheme={setIsDarkTheme} 
+                />
                 {renderModeDisplay()}
-
-                <button onClick={() => setIsDarkTheme(prev => !prev)}>Switch theme</button>
             </AppStyled>
         </ThemeProvider>
     );

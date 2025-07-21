@@ -12,13 +12,15 @@ export const Container = styled.div`
 
 export const AppStyled = styled.div`
     padding: 20px;
-    background-color: #000000;
+    background-color: ${({ theme }) => theme.colors.appBg};
     min-height: 100vh;
     min-width: 100vw;
     flex-direction: column;
     display: flex;
     align-items: center;
     gap: 20px;
+
+    transition: all 200ms;
 `;
 
 export const ModesStyled = styled.div`
@@ -42,19 +44,19 @@ export const TimerSelectorButton = styled.button`
     border-radius: 100%;
     width: 100px;
     height: 100px;
-    background-color: #FF690C;
+    background-color: ${({ theme }) => theme.colors.timerSelectorBtn};
     color: white;
     border: none;
 
     &:disabled {
-        background-color: #8a3b0aff
+        background-color: ${({ theme }) => theme.colors.timerSelectorBtnDisabled};
     }
 `;
 
 export const ModeButtonStyled = styled.button`
     padding: 7px 40px;
-    color: #C2C2C2;
-    background-color: #151515;
+    color: ${({ theme }) => theme.colors.regularText};
+    background-color: ${({ theme }) => theme.colors.regularBg};
     border-radius: 20px;
     border: none;
     font-size: 3rem;
@@ -62,13 +64,13 @@ export const ModeButtonStyled = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: #1f1f1fff
+        background-color: ${({ theme }) => theme.colors.regularBgHover};
     }
 
     &:disabled {
-        color: #353535;
+        color: ${({ theme }) => theme.colors.regularTextDisabled};
         cursor: not-allowed;
-        background-color: #090909;
+        background-color: ${({ theme }) => theme.colors.regularBgDisabled};
     }
 `;
 
@@ -87,37 +89,37 @@ export const ControlButtonStyled = styled.button<{
     }
 
     &:disabled {
-        color: #353535;
+        color: ${({ theme }) => theme.colors.regularTextDisabled};
         cursor: not-allowed;
-        background-color: #090909;
+        background-color: ${({ theme }) => theme.colors.regularBgDisabled};
     }
 
-    background-color: ${({ $variant }) => {
+    background-color: ${({ $variant, theme }) => {
         switch ($variant) {
             case 'pause':
-                return '#0F0E07';
+                return theme.colors.pauseBtnBg;
                 
             case 'start':
-                return '#070F07';
+                return theme.colors.startBtnBg;
 
             case 'reset':
-                return '#0F0707';
+                return theme.colors.resetBtnBg;
         
             default:
                 break;
         }
     }};
 
-    color: ${({ $variant }) => {
+    color: ${({ $variant, theme }) => {
         switch ($variant) {
             case 'pause':
-                return '#FFE97B';
+                return theme.colors.pauseBtnText;
                 
             case 'start':
-                return '#7BFF7F';
+                return theme.colors.startBtnText;
 
             case 'reset':
-                return '#FF7B7B';
+                return theme.colors.resetBtnText;
         
             default:
                 break;
@@ -139,8 +141,8 @@ export const DisplayStyled = styled.span`
     font-weight: 500;
     border-radius: 49px;
     padding: 0px 75px;
-    color: ${({ theme }) => theme.colors.normalText};
-    background-color: ${({ theme }) => theme.colors.normalBackground};
+    color: ${({ theme }) => theme.colors.regularText};
+    background-color: ${({ theme }) => theme.colors.regularBg};
 
     /* box-shadow: inset 2px 2px 10px hsl(0, 0, 100, 10); */
 `;
