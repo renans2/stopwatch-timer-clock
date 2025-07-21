@@ -139,8 +139,8 @@ export const DisplayStyled = styled.span`
     font-weight: 500;
     border-radius: 49px;
     padding: 0px 75px;
-    color: #C2C2C2;
-    background-color: #151515;
+    color: ${({ theme }) => theme.colors.normalText};
+    background-color: ${({ theme }) => theme.colors.normalBackground};
 
     /* box-shadow: inset 2px 2px 10px hsl(0, 0, 100, 10); */
 `;

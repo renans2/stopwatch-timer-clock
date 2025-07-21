@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components";
-import { theme } from "./theme/theme";
 import { AppStyled } from "./components/StyledComponents";
 import Modes from "./components/Modes";
-import DefaultTimeDisplay from "./components/displays/TimeDisplay";
 import Stopwatch from "./components/displays/Stopwatch";
 import Timer from "./components/displays/Timer";
 import Clock from "./components/displays/Clock";
 import GlobalStyle from "./styles/GlobalStyle";
+import { darkTheme } from "./theme/dark";
+import { lightTheme } from "./theme/light";
 
 export type Mode = "stopwatch" | "timer" | "clock";
 
 function App() {
     const [mode, setMode] = useState<Mode>("clock");
-    const [running, setRunning] = useState(false);
+    // const [running, setRunning] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
 
     useEffect(() => {
         document.title = "Stopwatch-Timer-Clock";
@@ -36,11 +37,13 @@ function App() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <GlobalStyle />
             <AppStyled>
                 <Modes mode={mode} setMode={setMode} />
                 {renderModeDisplay()}
+
+                <button onClick={() => setIsDarkTheme(prev => !prev)}>Switch theme</button>
             </AppStyled>
         </ThemeProvider>
     );
