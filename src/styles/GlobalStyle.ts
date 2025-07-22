@@ -6,6 +6,16 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
         font-family: "Roboto", sans-serif;
+        transition: all 500ms;
+    }
+
+    body {
+        background-color: ${({ theme }) => theme.colors.appBg};
+        min-width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
     }
 `;
 

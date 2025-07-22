@@ -39,11 +39,11 @@ export default function Modes({
                 Timer
             </ModeButtonStyled>
 
-            <ModeButtonStyled 
+            {/* <ModeButtonStyled 
                 onClick={() => setIsDarkTheme(prev => !prev)}
             >
                 {isDarkTheme ? <Sun /> : <Moon />}
-            </ModeButtonStyled>
+            </ModeButtonStyled> */}
         </ModesStyled>
     );
 }

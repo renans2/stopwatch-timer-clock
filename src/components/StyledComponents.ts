@@ -11,20 +11,20 @@ export const Container = styled.div`
 `;
 
 export const AppStyled = styled.div`
-    padding: 20px;
     background-color: ${({ theme }) => theme.colors.appBg};
-    min-height: 100vh;
-    min-width: 100vw;
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
     flex-direction: column;
     display: flex;
     align-items: center;
     gap: 20px;
-
-    transition: all 200ms;
 `;
 
 export const ModesStyled = styled.div`
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 10px;
     margin-bottom: 70px;
@@ -134,6 +134,7 @@ export const ControlButtonsContainer = styled.div`
 `;
 
 export const DisplayStyled = styled.span`
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
