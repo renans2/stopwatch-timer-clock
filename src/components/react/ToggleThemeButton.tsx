@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { S_ToggleThemeButton } from "../styled/toggleThemeButton";
 import { Moon, Sun } from "lucide-react";
 
@@ -11,6 +11,18 @@ export default function ToggleThemeButton({
     isDarkTheme,
     setIsDarkTheme,
 }: ToggleThemeButtonProps) {
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme)
+            setIsDarkTheme(savedTheme === "dark");
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+    }, [isDarkTheme]);
+
     return (
         <S_ToggleThemeButton onClick={() => setIsDarkTheme(prev => !prev)}>
             {isDarkTheme ? (

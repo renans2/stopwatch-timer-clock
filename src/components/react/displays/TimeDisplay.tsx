@@ -7,11 +7,11 @@ type DefaultTimeDisplayProps = {
 export default function TimeDisplay({ counter }: DefaultTimeDisplayProps) {
     return (        
         <S_Display>
-            {Math.floor(counter/3600).toString().padStart(2, "0")}
-            :
-            {(Math.floor(counter/60) % 60).toString().padStart(2, "0")}
-            :
-            {(counter % 60).toString().padStart(2, "0")}
+            <span>{Math.floor(counter/3600).toString().padStart(2, "0")}</span>
+            <span>:</span>
+            <span>{(Math.floor(counter/60) % 60).toString().padStart(2, "0")}</span>
+            <span>:</span>
+            <span>{(counter % 60).toString().padStart(2, "0")}</span>
         </S_Display>
     );
 }
