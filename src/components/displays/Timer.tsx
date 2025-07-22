@@ -53,7 +53,7 @@ export default function Timer() {
             )}
         </>
 
-        // <DisplayStyled>
+        // <S_Display>
         //     {
         //         ((mode === "timer" && token !== undefined) || (mode !== "timer"))
         //         &&
@@ -65,6 +65,6 @@ export default function Timer() {
         //             {(displayTime % 60).toString().padStart(2, "0")}
         //         </>
         //     }
-        // </DisplayStyled>
+        // </S_Display>
     );
 }

@@ -1,4 +1,4 @@
-import { ControlButtonsContainer, ControlButtonStyled } from "./StyledComponents";
+import { S_ControlButtonsContainer, S_ControlButton } from "./StyledComponents";
 
 type StopwatchControlButtonsProps = {
     startStopwatch: () => void;
@@ -14,29 +14,29 @@ export default function StopwatchControlButtons({
     isRunning 
 }: StopwatchControlButtonsProps) {
     return (      
-        <ControlButtonsContainer>
-            <ControlButtonStyled 
+        <S_ControlButtonsContainer>
+            <S_ControlButton 
                 disabled={!isRunning} 
                 onClick={pauseStopwatch}
                 $variant="pause"
             >
                 Pause
-            </ControlButtonStyled>
+            </S_ControlButton>
             
-            <ControlButtonStyled 
+            <S_ControlButton 
                 disabled={isRunning} 
                 onClick={startStopwatch}
                 $variant="start"
             >
                 Start
-            </ControlButtonStyled>
+            </S_ControlButton>
 
-            <ControlButtonStyled 
+            <S_ControlButton 
                 onClick={resetStopwatch}
                 $variant="reset"
             >
                 Reset
-            </ControlButtonStyled>
-        </ControlButtonsContainer>
+            </S_ControlButton>
+        </S_ControlButtonsContainer>
     );
 }

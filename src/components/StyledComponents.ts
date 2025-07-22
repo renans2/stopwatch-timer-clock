@@ -1,16 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    width: 500px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    background-color: red;
-    text-align: center;
-`;
-
-export const AppStyled = styled.div`
+export const S_App = styled.div`
     background-color: ${({ theme }) => theme.colors.appBg};
     height: 100%;
     width: 100%;
@@ -21,7 +11,7 @@ export const AppStyled = styled.div`
     gap: 20px;
 `;
 
-export const ModesStyled = styled.div`
+export const S_Modes = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -30,13 +20,13 @@ export const ModesStyled = styled.div`
     margin-bottom: 70px;
 `;
 
-export const TimerSelectorButtonsContainer = styled.div`
+export const S_TimerSelectorButtonsContainer = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 50px;
 `;
 
-export const TimerSelectorButton = styled.button`
+export const S_TimerSelectorButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +43,7 @@ export const TimerSelectorButton = styled.button`
     }
 `;
 
-export const ModeButtonStyled = styled.button`
+export const S_ModeButton = styled.button`
     padding: 7px 40px;
     color: ${({ theme }) => theme.colors.regularText};
     background-color: ${({ theme }) => theme.colors.regularBg};
@@ -74,9 +64,10 @@ export const ModeButtonStyled = styled.button`
     }
 `;
 
-export const ControlButtonStyled = styled.button<{
+export const S_ControlButton = styled.button<{
     $variant: 'pause' | 'start' | 'reset';
 }>`
+    flex: 1;
     padding: 7px 20px;
     border-radius: 20px;
     border: none;
@@ -127,13 +118,14 @@ export const ControlButtonStyled = styled.button<{
     }};
 `;
 
-export const ControlButtonsContainer = styled.div`
+export const S_ControlButtonsContainer = styled.div`
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 10px;
 `;
 
-export const DisplayStyled = styled.span`
+export const S_Display = styled.span`
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -146,19 +138,4 @@ export const DisplayStyled = styled.span`
     background-color: ${({ theme }) => theme.colors.regularBg};
 
     /* box-shadow: inset 2px 2px 10px hsl(0, 0, 100, 10); */
-`;
-
-export const TimerInputContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: green;
-    text-align: center;
-`;
-
-export const ControlButtonsStyled = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    background-color: pink;
-    text-align: center;
 `;

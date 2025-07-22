@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components";
-import { AppStyled } from "./components/StyledComponents";
+import { S_App } from "./components/StyledComponents";
 import Modes from "./components/Modes";
 import Stopwatch from "./components/displays/Stopwatch";
 import Timer from "./components/displays/Timer";
@@ -39,7 +39,7 @@ function App() {
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <GlobalStyle />
-            <AppStyled>
+            <S_App>
                 <Modes 
                     mode={mode} 
                     setMode={setMode} 
@@ -47,7 +47,7 @@ function App() {
                     setIsDarkTheme={setIsDarkTheme} 
                 />
                 {renderModeDisplay()}
-            </AppStyled>
+            </S_App>
         </ThemeProvider>
     );
 }

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import TimerSelectorDisplay from "./TimerSelectorDisplay";
-import { TimerSelectorButton, TimerSelectorButtonsContainer } from "../StyledComponents";
+import { S_TimerSelectorButton, S_TimerSelectorButtonsContainer } from "../StyledComponents";
 import { Minus, Plus } from "lucide-react";
 
 type InputAction = "+" | "-";
@@ -71,11 +71,11 @@ export default function TimerSelector({
 
     return (        
         <>
-            <TimerSelectorButtonsContainer>
-                <TimerSelectorButton onClick={() => changeInputHours("+")}><Plus size={64} /></TimerSelectorButton>
-                <TimerSelectorButton onClick={() => changeInputMinutes("+")}><Plus size={64} /></TimerSelectorButton>
-                <TimerSelectorButton onClick={() => changeInputSeconds("+")}><Plus size={64} /></TimerSelectorButton>
-            </TimerSelectorButtonsContainer>
+            <S_TimerSelectorButtonsContainer>
+                <S_TimerSelectorButton onClick={() => changeInputHours("+")}><Plus size={64} /></S_TimerSelectorButton>
+                <S_TimerSelectorButton onClick={() => changeInputMinutes("+")}><Plus size={64} /></S_TimerSelectorButton>
+                <S_TimerSelectorButton onClick={() => changeInputSeconds("+")}><Plus size={64} /></S_TimerSelectorButton>
+            </S_TimerSelectorButtonsContainer>
 
             <TimerSelectorDisplay 
                 seconds={inputSec} 
@@ -83,11 +83,11 @@ export default function TimerSelector({
                 hours={inputHours}
             />
 
-            <TimerSelectorButtonsContainer>
-                <TimerSelectorButton onClick={() => changeInputHours("-")} disabled={inputHours === 0}><Minus size={64} /></TimerSelectorButton>
-                <TimerSelectorButton onClick={() => changeInputMinutes("-")}><Minus size={64} /></TimerSelectorButton>
-                <TimerSelectorButton onClick={() => changeInputSeconds("-")}><Minus size={64} /></TimerSelectorButton>
-            </TimerSelectorButtonsContainer>
+            <S_TimerSelectorButtonsContainer>
+                <S_TimerSelectorButton onClick={() => changeInputHours("-")} disabled={inputHours === 0}><Minus size={64} /></S_TimerSelectorButton>
+                <S_TimerSelectorButton onClick={() => changeInputMinutes("-")}><Minus size={64} /></S_TimerSelectorButton>
+                <S_TimerSelectorButton onClick={() => changeInputSeconds("-")}><Minus size={64} /></S_TimerSelectorButton>
+            </S_TimerSelectorButtonsContainer>
 
             <button onClick={handleStartTimer}>start timer</button>
         </>

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Mode } from "../App";
-import { ModesStyled, ModeButtonStyled } from "./StyledComponents";
+import { S_Modes, S_ModeButton } from "./StyledComponents";
 import { Moon, Sun } from "lucide-react";
 
 type ModesProps = {
@@ -17,33 +17,33 @@ export default function Modes({
     setIsDarkTheme,
 }: ModesProps) {
     return (
-        <ModesStyled>
-            <ModeButtonStyled 
+        <S_Modes>
+            <S_ModeButton 
                 onClick={() => setMode("clock")} 
                 disabled={mode === "clock"}
             >
                 Clock
-            </ModeButtonStyled>
+            </S_ModeButton>
 
-            <ModeButtonStyled 
+            <S_ModeButton 
                 onClick={() => setMode("stopwatch")} 
                 disabled={mode === "stopwatch"}
             >
                 Stopwatch
-            </ModeButtonStyled>
+            </S_ModeButton>
             
-            <ModeButtonStyled 
+            <S_ModeButton 
                 onClick={() => setMode("timer")} 
                 disabled={mode === "timer"}
             >
                 Timer
-            </ModeButtonStyled>
+            </S_ModeButton>
 
-            {/* <ModeButtonStyled 
+            {/* <S_ModeButton 
                 onClick={() => setIsDarkTheme(prev => !prev)}
             >
                 {isDarkTheme ? <Sun /> : <Moon />}
-            </ModeButtonStyled> */}
-        </ModesStyled>
+            </S_ModeButton> */}
+        </S_Modes>
     );
 }
