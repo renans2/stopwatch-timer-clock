@@ -12,9 +12,15 @@ export const darkTheme: DefaultTheme = {
         regularBgDisabled: "#090909",
         pauseBtnBg: "#0F0E07",
         pauseBtnText: "#FFE97B",
+        pauseBtnBgDisabled: "#070603",
+        pauseBtnTextDisabled: "#1F1A00",
         startBtnBg: "#070F07",
         startBtnText: "#7BFF7F",
+        startBtnBgDisabled: "#030703",
+        startBtnTextDisabled: "#001D01",
         resetBtnBg: "#0F0707",
         resetBtnText: "#FF7B7B",
+        resetBtnBgDisabled: "#070303",
+        resetBtnTextDisabled: "#1F0000",
     }
 }

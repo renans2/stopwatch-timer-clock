@@ -6,12 +6,13 @@ export const S_ModeButton = styled.button`
     background-color: ${({ theme }) => theme.colors.regularBg};
     border-radius: 20px;
     border: none;
-    font-size: 3rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 700;
     cursor: pointer;
+    flex: 1;
 
     &:hover {
-        background-color: ${({ theme }) => theme.colors.regularBgHover};
+        opacity: 0.75;
     }
 
     &:disabled {

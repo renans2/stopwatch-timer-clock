@@ -3,6 +3,7 @@ import { Mode } from "../../App";
 import { Moon, Sun } from "lucide-react";
 import { S_ModeButton } from "../styled/modeButton";
 import { S_Modes } from "../styled/modes";
+import ToggleThemeButton from "./ToggleThemeButton";
 
 type ModesProps = {
     mode: string;
@@ -40,11 +41,9 @@ export default function Modes({
                 Timer
             </S_ModeButton>
 
-            {/* <S_ModeButton 
-                onClick={() => setIsDarkTheme(prev => !prev)}
-            >
-                {isDarkTheme ? <Sun /> : <Moon />}
-            </S_ModeButton> */}
+            <ToggleThemeButton 
+                isDarkTheme={isDarkTheme}
+                setIsDarkTheme={setIsDarkTheme} />
         </S_Modes>
     );
 }

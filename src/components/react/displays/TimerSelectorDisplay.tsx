@@ -1,4 +1,4 @@
-import { S_Display } from "../../styled/display";
+import { S_TimerSelectorDisplay } from "../../styled/timerSelectorDisplay";
 
 type TimerSelectorDisplayProps = {
     seconds: number;
@@ -12,12 +12,12 @@ export default function TimerSelectorDisplay({
     hours,
 }: TimerSelectorDisplayProps) {
     return (        
-        <S_Display>
-            {hours.toString().padStart(2, "0")}
-            :
-            {minutes.toString().padStart(2, "0")}
-            :
-            {seconds.toString().padStart(2, "0")}
-        </S_Display>
+        <S_TimerSelectorDisplay>
+            <span>{hours.toString().padStart(2, "0")}</span>
+            <span>:</span>
+            <span>{minutes.toString().padStart(2, "0")}</span>
+            <span>:</span>
+            <span>{seconds.toString().padStart(2, "0")}</span>
+        </S_TimerSelectorDisplay>
     );
 }

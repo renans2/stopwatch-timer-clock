@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const S_Display = styled.span`
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     font-size: 8rem;
     font-weight: 500;

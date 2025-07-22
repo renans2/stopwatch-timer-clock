@@ -13,10 +13,16 @@ declare module "styled-components" {
             regularBgDisabled: string,
             pauseBtnBg: string,
             pauseBtnText: string,
+            pauseBtnBgDisabled: string,
+            pauseBtnTextDisabled: string,
             startBtnBg: string,
             startBtnText: string,
+            startBtnBgDisabled: string,
+            startBtnTextDisabled: string,
             resetBtnBg: string,
             resetBtnText: string,
+            resetBtnBgDisabled: string,
+            resetBtnTextDisabled: string,
         }
     }
 }
