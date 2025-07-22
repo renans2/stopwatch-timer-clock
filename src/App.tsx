@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components";
-import { S_App } from "./components/StyledComponents";
-import Modes from "./components/Modes";
-import Stopwatch from "./components/displays/Stopwatch";
-import Timer from "./components/displays/Timer";
-import Clock from "./components/displays/Clock";
+import Modes from "./components/react/Modes";
 import GlobalStyle from "./styles/GlobalStyle";
 import { darkTheme } from "./theme/dark";
 import { lightTheme } from "./theme/light";
+import Clock from "./components/react/displays/Clock";
+import Stopwatch from "./components/react/displays/Stopwatch";
+import Timer from "./components/react/displays/Timer";
+import { S_App } from "./components/styled/app";
 
 export type Mode = "stopwatch" | "timer" | "clock";
 

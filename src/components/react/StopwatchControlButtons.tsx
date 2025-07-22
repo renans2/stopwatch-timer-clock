@@ -1,4 +1,5 @@
-import { S_ControlButtonsContainer, S_ControlButton } from "./StyledComponents";
+import { S_ControlButton } from "../styled/controlButton";
+import { S_ControlButtonsContainer } from "../styled/controlButtonsContainer";
 
 type StopwatchControlButtonsProps = {
     startStopwatch: () => void;

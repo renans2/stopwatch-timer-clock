@@ -1,4 +1,4 @@
-import { S_Display } from "../StyledComponents";
+import { S_Display } from "../../styled/display";
 
 type TimerSelectorDisplayProps = {
     seconds: number;

@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
-import { Mode } from "../App";
-import { S_Modes, S_ModeButton } from "./StyledComponents";
+import { Mode } from "../../App";
 import { Moon, Sun } from "lucide-react";
+import { S_ModeButton } from "../styled/modeButton";
+import { S_Modes } from "../styled/modes";
 
 type ModesProps = {
     mode: string;

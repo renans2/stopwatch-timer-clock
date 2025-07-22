@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import TimerSelectorDisplay from "./TimerSelectorDisplay";
-import { S_TimerSelectorButton, S_TimerSelectorButtonsContainer } from "../StyledComponents";
 import { Minus, Plus } from "lucide-react";
+import { S_TimerSelectorButtonsContainer } from "../../styled/timerSelectorButtonsContainer";
+import { S_TimerSelectorButton } from "../../styled/timerSelectorButton";
 
 type InputAction = "+" | "-";
 
