@@ -22,5 +22,7 @@ export const darkTheme: DefaultTheme = {
         resetBtnText: "#FF7B7B",
         resetBtnBgDisabled: "#070303",
         resetBtnTextDisabled: "#1F0000",
+        markCheckpointBtnBg: "#112273",
+        markCheckpointBtnText: "#C2C2C2",
     }
 }

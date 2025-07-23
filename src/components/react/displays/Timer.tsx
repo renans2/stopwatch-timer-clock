@@ -18,7 +18,14 @@ export default function Timer() {
     const startTimer = () => {
         if(!idRef.current) {
             idRef.current = setInterval(() => {
-                setCounter(prev => prev - 1)
+                setCounter(prev => {
+                    if (prev === 0) {
+                        clearInterval(idRef.current);
+                        return 0;
+                    } else {
+                        return prev - 1;
+                    }
+                });
             }, 1000);
 
             setIsRunning(true);

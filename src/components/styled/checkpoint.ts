@@ -7,6 +7,6 @@ export const S_Checkpoint = styled.li`
     width: 100%;
     list-style: none;
     font-size: 2rem;
-    font-weight: 500;
     border-bottom: 2px dotted ${({ theme }) => theme.colors.regularText};
+    font-style: italic;
 `;

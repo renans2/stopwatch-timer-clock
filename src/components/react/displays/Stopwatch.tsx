@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import StopwatchControlButtons from "../StopwatchControlButtons";
 import TimeDisplay from "./TimeDisplay";
 import { Checkpoint } from "../../../types/Checkpoint";
-import Checkpoints from "../Checkpoints";
+import Checkpoints from "../CheckpointsList";
+import { S_MarkCheckpointButton } from "../../styled/markCheckpointButton";
 
 export default function Stopwatch() {
     const [counter, setCounter] = useState(0);
@@ -38,6 +39,8 @@ export default function Stopwatch() {
 
     const resetStopwatch = () => {
         setCounter(0);
+        setCheckpoints([]);
+        pauseStopwatch();
     }
 
     const handleAddCheckpoint = () => {
@@ -58,11 +61,12 @@ export default function Stopwatch() {
             <StopwatchControlButtons 
                 startStopwatch={startStopwatch} 
                 pauseStopwatch={pauseStopwatch} 
-                resetStopwatch={resetStopwatch} 
+                resetStopwatch={resetStopwatch}
+                counter={counter}
                 isRunning={isRunning}
             />
             <TimeDisplay counter={counter} />
-            <button disabled={!isRunning} onClick={handleAddCheckpoint}>Checkpoint</button>
+            <S_MarkCheckpointButton disabled={!isRunning} onClick={handleAddCheckpoint}>Mark Checkpoint</S_MarkCheckpointButton>
             <Checkpoints checkpoints={checkpoints} />
         </> 
     );

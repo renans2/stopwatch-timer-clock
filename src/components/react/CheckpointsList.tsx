@@ -7,8 +7,8 @@ export default function Checkpoints({ checkpoints }: { checkpoints: Checkpoint[]
         <S_CheckpointsList>
             {checkpoints.map(checkpoint => (
                 <S_Checkpoint key={checkpoint.id}>
-                    <span>{checkpoint.id}</span>
-                    <span style={{fontStyle: "italic"}}>
+                    <span>{checkpoint.id}.</span>
+                    <span>
                         {checkpoint.hours.toString().padStart(2, "0")}
                         :
                         {checkpoint.minutes.toString().padStart(2, "0")}

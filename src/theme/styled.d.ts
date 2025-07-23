@@ -23,6 +23,8 @@ declare module "styled-components" {
             resetBtnText: string,
             resetBtnBgDisabled: string,
             resetBtnTextDisabled: string,
+            markCheckpointBtnBg: string,
+            markCheckpointBtnText: string,
         }
     }
 }

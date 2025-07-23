@@ -22,5 +22,7 @@ export const lightTheme: DefaultTheme = {
         resetBtnText: "#FF6565",
         resetBtnBgDisabled: "#EBDADA",
         resetBtnTextDisabled: "#D0A7A7",
+        markCheckpointBtnBg: "#3255ffff",
+        markCheckpointBtnText: "#E9E9E9",
     }
 }
