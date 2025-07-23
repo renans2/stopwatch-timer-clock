@@ -11,6 +11,4 @@ export const S_Display = styled.span`
     padding: 0px 75px;
     color: ${({ theme }) => theme.colors.regularText};
     background-color: ${({ theme }) => theme.colors.regularBg};
-
-    /* box-shadow: inset 2px 2px 10px hsl(0, 0, 100, 10); */
 `;

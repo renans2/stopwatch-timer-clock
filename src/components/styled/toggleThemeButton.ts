@@ -14,7 +14,6 @@ export const S_ToggleThemeButton = styled.button`
     border: none;
     width: 120px;
     padding: 15px;
-    cursor: pointer;
     background-color: ${({ theme }) => theme.colors.regularBg};
     color: ${({ theme }) => theme.colors.regularText};
 `;

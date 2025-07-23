@@ -10,13 +10,4 @@ export const S_StartTimerButton = styled.button`
     font-weight: 500;
     border-radius: 30px;
     cursor: pointer;
-
-    &:not(:disabled):hover {
-        opacity: 0.75;
-    }
-
-    &:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
 `;

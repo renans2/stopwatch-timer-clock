@@ -17,6 +17,19 @@ const GlobalStyle = createGlobalStyle`
         justify-content: center;
         overflow-x: hidden;
     }
+
+    button {
+        cursor: pointer;
+
+        &:not(:disabled):hover {
+            opacity: 0.75;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
 `;
 
 export default GlobalStyle;

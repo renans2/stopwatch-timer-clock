@@ -11,9 +11,4 @@ export const S_TimerSelectorButton = styled.button`
     background-color: ${({ theme }) => theme.colors.timerSelectorBtn};
     color: white;
     border: none;
-    cursor: pointer;
-
-    &:disabled {
-        background-color: ${({ theme }) => theme.colors.timerSelectorBtnDisabled};
-    }
 `;
