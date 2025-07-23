@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
         display: flex;
         justify-content: center;
-        padding: 20px;
         overflow-x: hidden;
     }
 `;

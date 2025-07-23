@@ -8,5 +8,6 @@ export const S_App = styled.div`
     flex-direction: column;
     display: flex;
     align-items: center;
+    padding: 20px;
     gap: 20px;
 `;

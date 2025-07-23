@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import TimerSelector from "./TimerSelector";
 import TimeDisplay from "./TimeDisplay";
+import TimerControlButtons from "../TimerControlButtons";
 
 export default function Timer() {
     const [counter, setCounter] = useState(0);
@@ -19,8 +20,8 @@ export default function Timer() {
         if(!idRef.current) {
             idRef.current = setInterval(() => {
                 setCounter(prev => {
-                    if (prev === 0) {
-                        clearInterval(idRef.current);
+                    if (prev === 1) {
+                        resetTimer();
                         return 0;
                     } else {
                         return prev - 1;
@@ -43,6 +44,8 @@ export default function Timer() {
 
     const resetTimer = () => {
         setCounter(0);
+        pauseTimer();
+        setSelecting(true);
     }
 
     return (        
@@ -56,7 +59,17 @@ export default function Timer() {
             )}
 
             {!selecting && (
-                <TimeDisplay counter={counter} />
+                <>
+                    <TimerControlButtons
+                        startTimer={startTimer}
+                        pauseTimer={pauseTimer}
+                        resetTimer={resetTimer}
+                        counter={counter}
+                        isRunning={isRunning}
+                    />
+
+                    <TimeDisplay counter={counter} />
+                </>
             )}
         </>
 

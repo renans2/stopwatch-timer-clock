@@ -3,6 +3,8 @@ import TimerSelectorDisplay from "./TimerSelectorDisplay";
 import { Minus, Plus } from "lucide-react";
 import { S_TimerSelectorButtonsContainer } from "../../styled/timerSelectorButtonsContainer";
 import { S_TimerSelectorButton } from "../../styled/timerSelectorButton";
+import { S_ControlButton } from "../../styled/controlButton";
+import { S_StartTimerButton } from "../../styled/startTimerButton";
 
 type InputAction = "+" | "-";
 
@@ -72,6 +74,13 @@ export default function TimerSelector({
 
     return (        
         <>
+            <S_StartTimerButton 
+                disabled={inputHours === 0 && inputMin === 0 && inputSec === 0}
+                onClick={handleStartTimer}
+            >
+                Start Timer
+            </S_StartTimerButton>
+
             <S_TimerSelectorButtonsContainer>
                 <S_TimerSelectorButton onClick={() => changeInputHours("+")}><Plus size={64} /></S_TimerSelectorButton>
                 <S_TimerSelectorButton onClick={() => changeInputMinutes("+")}><Plus size={64} /></S_TimerSelectorButton>
@@ -89,8 +98,6 @@ export default function TimerSelector({
                 <S_TimerSelectorButton onClick={() => changeInputMinutes("-")}><Minus size={64} /></S_TimerSelectorButton>
                 <S_TimerSelectorButton onClick={() => changeInputSeconds("-")}><Minus size={64} /></S_TimerSelectorButton>
             </S_TimerSelectorButtonsContainer>
-
-            <button onClick={handleStartTimer}>start timer</button>
         </>
     );
 }
