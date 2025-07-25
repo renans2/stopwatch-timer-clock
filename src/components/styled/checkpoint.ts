@@ -1,6 +1,7 @@
+import { motion } from "motion/react";
 import styled from "styled-components";
 
-export const S_Checkpoint = styled.li`
+export const S_Checkpoint = styled(motion.li)`
     color: ${({ theme }) => theme.colors.regularText};
     display: flex;
     justify-content: space-between;
