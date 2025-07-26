@@ -25,7 +25,7 @@ export default function Clock() {
         };
     }, []);
 
-    return (        
+    return (
         <TimeDisplay counter={counter} />
     );
 }

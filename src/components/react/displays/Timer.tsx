@@ -48,7 +48,7 @@ export default function Timer() {
         setSelecting(true);
     }
 
-    return (        
+    return (      
         <>
             {selecting && (
                 <TimerSelector 
@@ -72,19 +72,5 @@ export default function Timer() {
                 </>
             )}
         </>
-
-        // <S_Display>
-        //     {
-        //         ((mode === "timer" && token !== undefined) || (mode !== "timer"))
-        //         &&
-        //         <>
-        //             {Math.floor(displayTime/3600).toString().padStart(2, "0")}
-        //             :
-        //             {(Math.floor(displayTime/60) % 60).toString().padStart(2, "0")}
-        //             :
-        //             {(displayTime % 60).toString().padStart(2, "0")}
-        //         </>
-        //     }
-        // </S_Display>
     );
 }

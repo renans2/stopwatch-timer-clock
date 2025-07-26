@@ -8,13 +8,39 @@ import Clock from "./components/react/displays/Clock";
 import Stopwatch from "./components/react/displays/Stopwatch";
 import Timer from "./components/react/displays/Timer";
 import { S_App } from "./components/styled/app";
+import { AnimatePresence } from "motion/react";
+import { S_ModeContainer } from "./components/styled/modeContainer";
 
 export type Mode = "stopwatch" | "timer" | "clock";
 
+export const order: Record<Mode, number> = {
+    clock: 0,
+    stopwatch: 1,
+    timer: 2,
+}
+
 function App() {
-    const [mode, setMode] = useState<Mode>("clock");
     // const [running, setRunning] = useState(false);
+    const [mode, setMode] = useState<Mode>("clock");
+    const [prevMode, setPrevMode] = useState<Mode>("clock");
     const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
+
+    const direction = order[mode] > order[prevMode] ? 1 : -1;
+
+    const variants = {
+        initial: (dir: number) => ({
+            x: dir * 1000,
+            opacity: 0,
+        }),
+        animate: {
+            x: 0,
+            opacity: 1,
+        },
+        exit: (dir: number) => ({
+            x: dir * -1000,
+            opacity: 0,
+        }),
+    };
 
     useEffect(() => {
         document.title = "Stopwatch-Timer-Clock";
@@ -43,10 +69,26 @@ function App() {
                 <Modes 
                     mode={mode} 
                     setMode={setMode} 
+                    setPrevMode={setPrevMode}
                     isDarkTheme={isDarkTheme}
                     setIsDarkTheme={setIsDarkTheme} 
                 />
-                {renderModeDisplay()}
+                <AnimatePresence 
+                    mode="popLayout"
+                    custom={direction}
+                >
+                    <S_ModeContainer
+                        key={mode}
+                        custom={direction}
+                        variants={variants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={{ type: "spring", duration: 0.75 }}
+                    >
+                        {renderModeDisplay()}
+                    </S_ModeContainer>
+                </AnimatePresence>
             </S_App>
         </ThemeProvider>
     );
