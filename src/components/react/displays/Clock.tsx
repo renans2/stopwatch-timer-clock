@@ -1,16 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import TimeDisplay from "./TimeDisplay";
+import useTimeZone from "../../../hooks/useTimeZone";
+import TimeZoneSelector from "../TimeZoneSelector";
 
 export default function Clock() {
-    const [counter, setCounter] = useState(0);
+    const { city, setCity, counter, setCounter } = useTimeZone();
     const idRef = useRef<number | undefined>(undefined);
 
     useEffect(() => {
-        const time = new Date();
-        const timeInSeconds = 3600 * time.getHours() + 60 * time.getMinutes() + time.getSeconds();
-    
-        setCounter(timeInSeconds);
-
         idRef.current = setInterval(() => {
             setCounter(prev => {
                 if (prev + 1 === 24 * 3600)
@@ -26,6 +23,12 @@ export default function Clock() {
     }, []);
 
     return (
-        <TimeDisplay counter={counter} />
+        <>
+            <TimeZoneSelector 
+                city={city} 
+                setCity={setCity} 
+            />
+            <TimeDisplay counter={counter} />
+        </>
     );
 }
