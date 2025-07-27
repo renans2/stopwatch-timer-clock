@@ -84,7 +84,7 @@ function App() {
                         initial="initial"
                         animate="animate"
                         exit="exit"
-                        transition={{ type: "spring", duration: 0.75 }}
+                        transition={{ ease: "easeInOut", duration: 0.3 }}
                     >
                         {renderModeDisplay()}
                     </S_ModeContainer>

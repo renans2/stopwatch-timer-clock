@@ -8,6 +8,6 @@ export const S_StartTimerButton = styled.button`
     padding: 15px 0;
     font-size: 3rem;
     font-weight: 500;
-    border-radius: 30px;
+    border-radius: 15px;
     cursor: pointer;
 `;
