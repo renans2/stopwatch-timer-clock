@@ -3,21 +3,29 @@ import TimerSelector from "./TimerSelector";
 import TimeDisplay from "./TimeDisplay";
 import TimerControlButtons from "../TimerControlButtons";
 import { S_ModeContainer } from "../../styled/modeContainer";
+import { Mode } from "../../../App";
+import { getFormattedTime } from "../../../utils/getFormattedTime";
 
 type TimerProps = {
-    show: boolean,
+    mode: Mode
 }
 
-export default function Timer({ show }: TimerProps) {
+export default function Timer({ mode }: TimerProps) {
     const [counter, setCounter] = useState(0);
     const [selecting, setSelecting] = useState(true);
     const [isRunning, setIsRunning] = useState(false);
     const idRef = useRef<number | undefined>(undefined);
+    
+    const formattedTime = getFormattedTime(counter);
+    const show = mode === "timer";
+
+    if (show) {
+        document.title = `Timer: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
+    }
 
     useEffect(() => {
         return () => {
-            if(idRef.current)
-                clearInterval(idRef.current);
+            if(idRef.current) clearInterval(idRef.current);
         };
     }, []);
 
@@ -55,13 +63,12 @@ export default function Timer({ show }: TimerProps) {
 
     return (      
         <S_ModeContainer $show={show}>
-            {selecting && (
-                <TimerSelector 
-                    setCounter={setCounter}
-                    setSelecting={setSelecting}
-                    startTimer={startTimer}
-                />
-            )}
+            <TimerSelector 
+                setCounter={setCounter}
+                selecting={selecting}
+                setSelecting={setSelecting}
+                startTimer={startTimer}
+            />
 
             {!selecting && (
                 <>
@@ -73,7 +80,7 @@ export default function Timer({ show }: TimerProps) {
                         isRunning={isRunning}
                     />
 
-                    <TimeDisplay counter={counter} />
+                    <TimeDisplay formattedTime={formattedTime} />
                 </>
             )}
         </S_ModeContainer>

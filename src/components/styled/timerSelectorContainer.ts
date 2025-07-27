@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-export const S_TimerSelectorContainer = styled.div`
+export const S_TimerSelectorContainer = styled.div<{ $show: boolean }>`
     width: 100%;
-    border-radius: 15px;
-    /* border: 2px solid gray; */
-    overflow: hidden;
-    display: flex;
+    display: ${({ $show }) => $show ? 'flex' : 'none'};
     flex-direction: column;
+    gap: 20px;
 `;

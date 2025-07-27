@@ -8,6 +8,7 @@ const BASE_URL = "https://timeapi.io/api/time/current/zone?timeZone=";
 export default function useTimeZone() {
     const [city, setCity] = useState<"yours" | City>("yours");
     const [counter, setCounter] = useState<number>(0);
+    const [isFetching, setIsFetching] = useState<boolean>(false);
 
     const fetchTimeZone = async () => {
         if (city === "yours") {
@@ -16,10 +17,16 @@ export default function useTimeZone() {
             
             setCounter(timeInSeconds);
         } else {
-            const response = await fetch(`${BASE_URL}${CITY_TIME_ZONES[city]}`);
-            const data: TimeZoneResponse = await response.json();
-    
-            setCounter(3600 * data.hour + 60 * data.minute + data.seconds);
+            setIsFetching(true);
+            try {
+                const response = await fetch(`${BASE_URL}${CITY_TIME_ZONES[city]}`);
+                const data: TimeZoneResponse = await response.json();
+                setCounter(3600 * data.hour + 60 * data.minute + data.seconds);   
+            } catch (error) {
+                console.log(error);
+                setCity("yours");
+            }
+            setIsFetching(false);
         }
     }
 
@@ -32,5 +39,6 @@ export default function useTimeZone() {
         setCity, 
         counter,
         setCounter,
+        isFetching,
     };
 }

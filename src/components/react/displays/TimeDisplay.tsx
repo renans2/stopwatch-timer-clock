@@ -1,17 +1,20 @@
+import { FormattedTime } from "../../../types/FormattedTime";
 import { S_Display } from "../../styled/display";
 
-type DefaultTimeDisplayProps = {
-    counter: number;
+type TimeDisplayProps = {
+    formattedTime: FormattedTime;
 }
 
-export default function TimeDisplay({ counter }: DefaultTimeDisplayProps) {
+export default function TimeDisplay({ 
+    formattedTime: { hoursStr, minutesStr, secondsStr }
+}: TimeDisplayProps) {
     return (        
         <S_Display>
-            <span>{Math.floor(counter/3600).toString().padStart(2, "0")}</span>
+            <span>{hoursStr}</span>
             <span>:</span>
-            <span>{(Math.floor(counter/60) % 60).toString().padStart(2, "0")}</span>
+            <span>{minutesStr}</span>
             <span>:</span>
-            <span>{(counter % 60).toString().padStart(2, "0")}</span>
+            <span>{secondsStr}</span>
         </S_Display>
     );
 }

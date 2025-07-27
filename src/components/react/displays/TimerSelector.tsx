@@ -4,18 +4,21 @@ import { Minus, Plus } from "lucide-react";
 import { S_TimerSelectorButtonsContainer } from "../../styled/timerSelectorButtonsContainer";
 import { S_TimerSelectorButton } from "../../styled/timerSelectorButton";
 import { S_StartTimerButton } from "../../styled/startTimerButton";
+import { S_CoreTimerSelectorContainer } from "../../styled/coreTimerSelectorContainer";
 import { S_TimerSelectorContainer } from "../../styled/timerSelectorContainer";
 
 type InputAction = "+" | "-";
 
 type TimerSelectorProps = {
     setCounter: Dispatch<SetStateAction<number>>,
+    selecting: boolean,
     setSelecting: Dispatch<SetStateAction<boolean>>,
     startTimer: () => void,
 }
 
 export default function TimerSelector({
     setCounter,
+    selecting,
     setSelecting,
     startTimer,
 }: TimerSelectorProps) {
@@ -73,7 +76,7 @@ export default function TimerSelector({
     }
 
     return (        
-        <>
+        <S_TimerSelectorContainer $show={selecting}>
             <S_StartTimerButton 
                 disabled={inputHours === 0 && inputMin === 0 && inputSec === 0}
                 onClick={handleStartTimer}
@@ -81,7 +84,7 @@ export default function TimerSelector({
                 Start Timer
             </S_StartTimerButton>
 
-            <S_TimerSelectorContainer>
+            <S_CoreTimerSelectorContainer>
                 <S_TimerSelectorButtonsContainer>
                     <S_TimerSelectorButton onClick={() => changeInputHours("+")}><Plus size={64} /></S_TimerSelectorButton>
                     <S_TimerSelectorButton onClick={() => changeInputMinutes("+")}><Plus size={64} /></S_TimerSelectorButton>
@@ -99,7 +102,7 @@ export default function TimerSelector({
                     <S_TimerSelectorButton onClick={() => changeInputMinutes("-")}><Minus size={64} /></S_TimerSelectorButton>
                     <S_TimerSelectorButton onClick={() => changeInputSeconds("-")}><Minus size={64} /></S_TimerSelectorButton>
                 </S_TimerSelectorButtonsContainer>
-            </S_TimerSelectorContainer>
-        </>
+            </S_CoreTimerSelectorContainer>
+        </S_TimerSelectorContainer>
     );
 }

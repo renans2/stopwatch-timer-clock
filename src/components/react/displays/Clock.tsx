@@ -3,14 +3,23 @@ import TimeDisplay from "./TimeDisplay";
 import useTimeZone from "../../../hooks/useTimeZone";
 import TimeZoneSelector from "../TimeZoneSelector";
 import { S_ModeContainer } from "../../styled/modeContainer";
+import { Mode } from "../../../App";
+import { getFormattedTime } from "../../../utils/getFormattedTime";
 
 type ClockProps = {
-    show: boolean,
+    mode: Mode
 }
 
-export default function Clock({ show }: ClockProps) {
-    const { city, setCity, counter, setCounter } = useTimeZone();
+export default function Clock({ mode }: ClockProps) {
+    const { city, setCity, counter, setCounter, isFetching } = useTimeZone();
     const idRef = useRef<number | undefined>(undefined);
+
+    const formattedTime = getFormattedTime(counter);
+    const show = mode === "clock";
+
+    if (show) {
+        document.title = `Clock: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
+    }
 
     useEffect(() => {
         idRef.current = setInterval(() => {
@@ -33,7 +42,12 @@ export default function Clock({ show }: ClockProps) {
                 city={city} 
                 setCity={setCity} 
             />
-            <TimeDisplay counter={counter} />
+
+            {isFetching ? (
+                <h2 style={{color:"white"}}>Fetching...</h2>
+            ) : (
+                <TimeDisplay formattedTime={formattedTime} />
+            )}
         </S_ModeContainer>
     );
 }

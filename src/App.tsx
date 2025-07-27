@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ThemeProvider } from "styled-components";
 import Modes from "./components/react/Modes";
 import GlobalStyle from "./styles/GlobalStyle";
@@ -23,10 +23,6 @@ function App() {
     const [mode, setMode] = useState<Mode>("clock");
     const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
 
-    useEffect(() => {
-        document.title = "Stopwatch-Timer-Clock";
-    }, []);
-
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <GlobalStyle />
@@ -38,9 +34,9 @@ function App() {
                     setIsDarkTheme={setIsDarkTheme} 
                 />
 
-                <Clock     show={mode === "clock"} />
-                <Stopwatch show={mode === "stopwatch"}/>
-                <Timer     show={mode === "timer"}/>
+                <Clock     mode={mode} />
+                <Stopwatch mode={mode}/>
+                <Timer     mode={mode}/>
 
                 <MadeWithLove />
             </S_App>
