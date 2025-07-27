@@ -2,8 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import TimerSelector from "./TimerSelector";
 import TimeDisplay from "./TimeDisplay";
 import TimerControlButtons from "../TimerControlButtons";
+import { S_ModeContainer } from "../../styled/modeContainer";
 
-export default function Timer() {
+type TimerProps = {
+    show: boolean,
+}
+
+export default function Timer({ show }: TimerProps) {
     const [counter, setCounter] = useState(0);
     const [selecting, setSelecting] = useState(true);
     const [isRunning, setIsRunning] = useState(false);
@@ -49,7 +54,7 @@ export default function Timer() {
     }
 
     return (      
-        <>
+        <S_ModeContainer $show={show}>
             {selecting && (
                 <TimerSelector 
                     setCounter={setCounter}
@@ -71,6 +76,6 @@ export default function Timer() {
                     <TimeDisplay counter={counter} />
                 </>
             )}
-        </>
+        </S_ModeContainer>
     );
 }

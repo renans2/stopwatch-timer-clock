@@ -7,7 +7,6 @@ import ToggleThemeButton from "./ToggleThemeButton";
 type ModesProps = {
     mode: Mode;
     setMode: Dispatch<SetStateAction<Mode>>;
-    setPrevMode: Dispatch<SetStateAction<Mode>>;
     isDarkTheme: boolean;
     setIsDarkTheme: Dispatch<SetStateAction<boolean>>;
 }
@@ -15,18 +14,9 @@ type ModesProps = {
 export default function Modes({ 
     mode, 
     setMode,
-    setPrevMode,
     isDarkTheme,
     setIsDarkTheme,
 }: ModesProps) {
-
-    const handleChangeMode = (newMode: Mode) => {
-        if (newMode !== mode) {
-            setPrevMode(mode);
-            setMode(newMode);
-        }
-    };
-
     return (
         <>
             <ToggleThemeButton 
@@ -35,21 +25,21 @@ export default function Modes({
         
             <S_ModeButtonContainer>
                 <S_ModeButton 
-                    onClick={() => handleChangeMode("clock")} 
+                    onClick={() => setMode("clock")} 
                     disabled={mode === "clock"}
                 >
                     Clock
                 </S_ModeButton>
 
                 <S_ModeButton 
-                    onClick={() => handleChangeMode("stopwatch")} 
+                    onClick={() => setMode("stopwatch")} 
                     disabled={mode === "stopwatch"}
                 >
                     Stopwatch
                 </S_ModeButton>
                 
                 <S_ModeButton 
-                    onClick={() => handleChangeMode("timer")} 
+                    onClick={() => setMode("timer")} 
                     disabled={mode === "timer"}
                 >
                     Timer

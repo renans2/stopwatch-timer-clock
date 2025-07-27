@@ -2,8 +2,13 @@ import { useEffect, useRef } from "react";
 import TimeDisplay from "./TimeDisplay";
 import useTimeZone from "../../../hooks/useTimeZone";
 import TimeZoneSelector from "../TimeZoneSelector";
+import { S_ModeContainer } from "../../styled/modeContainer";
 
-export default function Clock() {
+type ClockProps = {
+    show: boolean,
+}
+
+export default function Clock({ show }: ClockProps) {
     const { city, setCity, counter, setCounter } = useTimeZone();
     const idRef = useRef<number | undefined>(undefined);
 
@@ -23,12 +28,12 @@ export default function Clock() {
     }, []);
 
     return (
-        <>
+        <S_ModeContainer $show={show}>
             <TimeZoneSelector 
                 city={city} 
                 setCity={setCity} 
             />
             <TimeDisplay counter={counter} />
-        </>
+        </S_ModeContainer>
     );
 }

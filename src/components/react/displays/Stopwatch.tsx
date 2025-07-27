@@ -4,8 +4,13 @@ import TimeDisplay from "./TimeDisplay";
 import { Checkpoint } from "../../../types/Checkpoint";
 import CheckpointsList from "../CheckpointsList";
 import { S_MarkCheckpointButton } from "../../styled/markCheckpointButton";
+import { S_ModeContainer } from "../../styled/modeContainer";
 
-export default function Stopwatch() {
+type StopwatchProps = {
+    show: boolean,
+}
+
+export default function Stopwatch({ show }: StopwatchProps) {
     const [counter, setCounter] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const idRef = useRef<number | undefined>(undefined);
@@ -57,7 +62,7 @@ export default function Stopwatch() {
     }
 
     return (    
-        <>
+        <S_ModeContainer $show={show}>
             <StopwatchControlButtons 
                 startStopwatch={startStopwatch} 
                 pauseStopwatch={pauseStopwatch} 
@@ -76,6 +81,6 @@ export default function Stopwatch() {
             </S_MarkCheckpointButton>
             
             <CheckpointsList checkpoints={checkpoints} />
-        </>
+        </S_ModeContainer>
     );
 }
