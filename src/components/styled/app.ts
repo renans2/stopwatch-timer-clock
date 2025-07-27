@@ -9,8 +9,10 @@ export const S_App = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    padding-bottom: 0px;
 
     @media (max-width: 768px) {
-        padding: 10px;   
+        padding: 10px;
+        padding-bottom: 0px;
     }
 `;

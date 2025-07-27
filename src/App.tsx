@@ -10,6 +10,7 @@ import Timer from "./components/react/displays/Timer";
 import { S_App } from "./components/styled/app";
 import { AnimatePresence } from "motion/react";
 import { S_ModeContainer } from "./components/styled/modeContainer";
+import MadeWithLove from "./components/react/MadeWithLove";
 
 export type Mode = "stopwatch" | "timer" | "clock";
 
@@ -73,6 +74,7 @@ function App() {
                     isDarkTheme={isDarkTheme}
                     setIsDarkTheme={setIsDarkTheme} 
                 />
+
                 <AnimatePresence 
                     mode="popLayout"
                     custom={direction}
@@ -89,6 +91,8 @@ function App() {
                         {renderModeDisplay()}
                     </S_ModeContainer>
                 </AnimatePresence>
+
+                <MadeWithLove />
             </S_App>
         </ThemeProvider>
     );
