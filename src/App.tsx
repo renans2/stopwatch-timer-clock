@@ -49,17 +49,10 @@ function App() {
 
     const renderModeDisplay = () => {
         switch (mode) {
-            case "clock":
-                return <Clock />;
-
-            case "stopwatch":
-                return <Stopwatch />;
-
-            case "timer":
-                return <Timer />;
-
-            default:
-                return null;
+            case "clock":     return <Clock />;
+            case "stopwatch": return <Stopwatch />;
+            case "timer":     return <Timer />;
+            default:          return null;
         }
     };
 

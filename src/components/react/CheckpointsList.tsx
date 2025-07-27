@@ -15,11 +15,15 @@ export default function CheckpointsList({ checkpoints }: { checkpoints: Checkpoi
                 >
                     <span>{checkpoint.id}.</span>
                     <span>
-                        {checkpoint.hours.toString().padStart(2, "0")}
-                        :
-                        {checkpoint.minutes.toString().padStart(2, "0")}
-                        :
-                        {checkpoint.seconds.toString().padStart(2, "0")}
+                        {checkpoint.hours !== 0 && (
+                            <>{checkpoint.hours} hour{checkpoint.hours > 1 && <>s</>}, </>
+                        )}
+
+                        {checkpoint.minutes !== 0 && (
+                            <>{checkpoint.minutes} min, </>
+                        )}
+
+                        <>{checkpoint.seconds} sec</>
                     </span>
                 </S_Checkpoint>
             ))}

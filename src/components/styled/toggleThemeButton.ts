@@ -10,7 +10,7 @@ export const S_ToggleThemeButton = styled.button`
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 15px;
     border: none;
     width: 120px;
     padding: 15px;

@@ -65,8 +65,16 @@ export default function Stopwatch() {
                 counter={counter}
                 isRunning={isRunning}
             />
+            
             <TimeDisplay counter={counter} />
-            <S_MarkCheckpointButton disabled={!isRunning} onClick={handleAddCheckpoint}>Mark Checkpoint</S_MarkCheckpointButton>
+            
+            <S_MarkCheckpointButton 
+                disabled={!isRunning} 
+                onClick={handleAddCheckpoint}
+            >
+                Mark Checkpoint
+            </S_MarkCheckpointButton>
+            
             <CheckpointsList checkpoints={checkpoints} />
         </>
     );
