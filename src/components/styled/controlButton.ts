@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const S_ControlButton = styled.button<{ $variant: 'pause' | 'start' | 'reset'; }>`
     flex: 1;
-    padding: 7px 20px;
-    border-radius: 30px;
+    padding: 7px 0;
+    border-radius: clamp(10px, 5vw, 30px);
     border: none;
-    font-size: 4rem;
+    font-size: clamp(2rem, 10vw, 4rem);
     font-weight: 500;
 
     background-color: ${({ $variant, theme }) => {

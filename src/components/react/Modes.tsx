@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Mode } from "../../App";
 import { S_ModeButton } from "../styled/modeButton";
-import { S_Modes } from "../styled/modes";
+import { S_ModeButtonContainer } from "../styled/modeButtonsContainer";
 import ToggleThemeButton from "./ToggleThemeButton";
 
 type ModesProps = {
@@ -28,31 +28,33 @@ export default function Modes({
     };
 
     return (
-        <S_Modes>
-            <S_ModeButton 
-                onClick={() => handleChangeMode("clock")} 
-                disabled={mode === "clock"}
-            >
-                Clock
-            </S_ModeButton>
-
-            <S_ModeButton 
-                onClick={() => handleChangeMode("stopwatch")} 
-                disabled={mode === "stopwatch"}
-            >
-                Stopwatch
-            </S_ModeButton>
-            
-            <S_ModeButton 
-                onClick={() => handleChangeMode("timer")} 
-                disabled={mode === "timer"}
-            >
-                Timer
-            </S_ModeButton>
-
+        <>
             <ToggleThemeButton 
                 isDarkTheme={isDarkTheme}
                 setIsDarkTheme={setIsDarkTheme} />
-        </S_Modes>
+        
+            <S_ModeButtonContainer>
+                <S_ModeButton 
+                    onClick={() => handleChangeMode("clock")} 
+                    disabled={mode === "clock"}
+                >
+                    Clock
+                </S_ModeButton>
+
+                <S_ModeButton 
+                    onClick={() => handleChangeMode("stopwatch")} 
+                    disabled={mode === "stopwatch"}
+                >
+                    Stopwatch
+                </S_ModeButton>
+                
+                <S_ModeButton 
+                    onClick={() => handleChangeMode("timer")} 
+                    disabled={mode === "timer"}
+                >
+                    Timer
+                </S_ModeButton>
+            </S_ModeButtonContainer>
+        </>
     );
 }

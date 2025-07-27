@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const S_Modes = styled.div`
+export const S_ModeButtonContainer = styled.div`
     width: 100%;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    margin-bottom: 70px;
+    margin-bottom: clamp(10px, 7vw, 70px);
 `;

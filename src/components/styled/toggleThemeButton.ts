@@ -16,4 +16,14 @@ export const S_ToggleThemeButton = styled.button`
     padding: 15px;
     background-color: ${({ theme }) => theme.colors.regularBg};
     color: ${({ theme }) => theme.colors.regularText};
+
+    @media (max-width: 930px) {
+        position: relative;
+        margin: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px
+    }
 `;
