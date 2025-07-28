@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import TimerSelectorDisplay from "./TimerSelectorDisplay";
 import { Minus, Plus } from "lucide-react";
 import { S_TimerSelectorButtonsContainer } from "../../styled/timerSelectorButtonsContainer";
@@ -6,6 +6,7 @@ import { S_TimerSelectorButton } from "../../styled/timerSelectorButton";
 import { S_StartTimerButton } from "../../styled/startTimerButton";
 import { S_CoreTimerSelectorContainer } from "../../styled/coreTimerSelectorContainer";
 import { S_TimerSelectorContainer } from "../../styled/timerSelectorContainer";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 type InputAction = "+" | "-";
 
@@ -22,9 +23,9 @@ export default function TimerSelector({
     setSelecting,
     startTimer,
 }: TimerSelectorProps) {
-    const [inputSec, setInputSec] = useState(0);
-    const [inputMin, setInputMin] = useState(0);
-    const [inputHours, setInputHours] = useState(0);
+    const [inputSec, setInputSec] = useLocalStorage("inputSec", 0);
+    const [inputMin, setInputMin] = useLocalStorage("inputMin", 0);
+    const [inputHours, setInputHours] = useLocalStorage("inputHours", 0);
 
     const handleStartTimer = () => {
         setCounter(
