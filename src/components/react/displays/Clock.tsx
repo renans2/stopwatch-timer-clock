@@ -12,14 +12,21 @@ type ClockProps = {
 }
 
 export default function Clock({ mode }: ClockProps) {
-    const { city, setCity, counter, setCounter, isFetching } = useTimeZone();
+    const { 
+        city, 
+        counter, 
+        isFetching,
+        setCity, 
+        setCounter, 
+    } = useTimeZone();
     const idRef = useRef<number | undefined>(undefined);
 
     const formattedTime = getFormattedTime(counter);
     const show = mode === "clock";
 
     if (show) {
-        document.title = `Clock: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
+        document.title = `${city === "yours" ? "Clock" : city}: 
+            ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
     }
 
     useEffect(() => {

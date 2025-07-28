@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import { TimeZoneResponse } from "../types/TimeZoneResponse";
 import { City } from "../types/City";
 import { CITY_TIME_ZONES } from "../constants/cityTimeZones";
+import useLocalStorage from "./useLocalStorage";
 
 const BASE_URL = "https://timeapi.io/api/time/current/zone?timeZone=";
 
 export default function useTimeZone() {
-    const [city, setCity] = useState<"yours" | City>("yours");
+    const [city, setCity] = useLocalStorage<"yours" | City>("city", "yours");
     const [counter, setCounter] = useState<number>(0);
     const [isFetching, setIsFetching] = useState<boolean>(false);
 
