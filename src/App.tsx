@@ -4,7 +4,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { darkTheme } from "./theme/dark";
 import { lightTheme } from "./theme/light";
 import Clock from "./components/react/modes/clock/Clock";
-import Stopwatch from "./components/react/Stopwatch";
+import Stopwatch from "./components/react/modes/stopwatch/Stopwatch";
 import Timer from "./components/react/modes/timer/Timer";
 import { S_App } from "./components/styled/app";
 import MadeWithLove from "./components/react/MadeWithLove";

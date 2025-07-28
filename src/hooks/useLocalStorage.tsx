@@ -8,8 +8,6 @@ export default function useLocalStorage<T>(key: string, defaultValue: T) {
     
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value));
-        console.log(localStorage);
-        
     }, [value]);
 
     return [value, setValue] as const;

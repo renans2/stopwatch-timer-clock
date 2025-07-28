@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import TimerSelector from "./TimerSelector";
 import TimeDisplay from "./TimeDisplay";
-import TimerControlButtons from "../../TimerControlButtons";
+import TimerControlButtons from "./TimerControlButtons";
 import { S_ModeContainer } from "../../../styled/modeContainer";
 import { Mode } from "../../../../App";
 import { getFormattedTime } from "../../../../utils/getFormattedTime";
