@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
-import { CITY_TIME_ZONES } from "../../constants/cityTimeZones";
-import { City } from "../../types/City";
-import { S_CitySelect } from "../styled/citySelect";
-import { S_CityLabel } from "../styled/cityLabel";
+import { CITY_TIME_ZONES } from "../../../../constants/cityTimeZones";
+import { City } from "../../../../types/City";
+import { S_CitySelect } from "../../../styled/citySelect";
+import { S_CityLabel } from "../../../styled/cityLabel";
 
 type TimeZoneSelectorProps = {
     city: "yours" | City,

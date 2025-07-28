@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import TimeDisplay from "./TimeDisplay";
-import useTimeZone from "../../../hooks/useTimeZone";
-import TimeZoneSelector from "../TimeZoneSelector";
-import { S_ModeContainer } from "../../styled/modeContainer";
-import { Mode } from "../../../App";
-import { getFormattedTime } from "../../../utils/getFormattedTime";
-import { S_FetchingText } from "../../styled/fetchingText";
+import TimeDisplay from "../timer/TimeDisplay";
+import useTimeZone from "../../../../hooks/useTimeZone";
+import TimeZoneSelector from "./TimeZoneSelector";
+import { S_ModeContainer } from "../../../styled/modeContainer";
+import { Mode } from "../../../../App";
+import { getFormattedTime } from "../../../../utils/getFormattedTime";
+import { S_FetchingText } from "../../../styled/fetchingText";
 
 type ClockProps = {
     mode: Mode

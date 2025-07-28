@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 import TimerSelectorDisplay from "./TimerSelectorDisplay";
 import { Minus, Plus } from "lucide-react";
-import { S_TimerSelectorButtonsContainer } from "../../styled/timerSelectorButtonsContainer";
-import { S_TimerSelectorButton } from "../../styled/timerSelectorButton";
-import { S_StartTimerButton } from "../../styled/startTimerButton";
-import { S_CoreTimerSelectorContainer } from "../../styled/coreTimerSelectorContainer";
-import { S_TimerSelectorContainer } from "../../styled/timerSelectorContainer";
-import useLocalStorage from "../../../hooks/useLocalStorage";
+import { S_TimerSelectorButtonsContainer } from "../../../styled/timerSelectorButtonsContainer";
+import { S_TimerSelectorButton } from "../../../styled/timerSelectorButton";
+import { S_StartTimerButton } from "../../../styled/startTimerButton";
+import { S_CoreTimerSelectorContainer } from "../../../styled/coreTimerSelectorContainer";
+import { S_TimerSelectorContainer } from "../../../styled/timerSelectorContainer";
+import useLocalStorage from "../../../../hooks/useLocalStorage";
 
 type InputAction = "+" | "-";
 

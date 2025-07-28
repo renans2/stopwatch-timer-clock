@@ -1,6 +1,6 @@
-import { Checkpoint } from "../../types/Checkpoint";
-import { S_Checkpoint } from "../styled/checkpoint";
-import { S_CheckpointsList } from "../styled/checkpointsList";
+import { Checkpoint } from "../../../../types/Checkpoint";
+import { S_Checkpoint } from "../../../styled/checkpoint";
+import { S_CheckpointsList } from "../../../styled/checkpointsList";
 
 export default function CheckpointsList({ checkpoints }: { checkpoints: Checkpoint[]}) {
     return (

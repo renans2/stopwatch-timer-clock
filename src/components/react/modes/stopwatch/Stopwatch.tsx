@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import StopwatchControlButtons from "../StopwatchControlButtons";
-import TimeDisplay from "./TimeDisplay";
-import { Checkpoint } from "../../../types/Checkpoint";
-import CheckpointsList from "../CheckpointsList";
-import { S_MarkCheckpointButton } from "../../styled/markCheckpointButton";
-import { S_ModeContainer } from "../../styled/modeContainer";
-import { Mode } from "../../../App";
-import { getFormattedTime } from "../../../utils/getFormattedTime";
+import StopwatchControlButtons from "./StopwatchControlButtons";
+import TimeDisplay from "../timer/TimeDisplay";
+import { Checkpoint } from "../../../../types/Checkpoint";
+import CheckpointsList from "./CheckpointsList";
+import { S_MarkCheckpointButton } from "../../../styled/markCheckpointButton";
+import { S_ModeContainer } from "../../../styled/modeContainer";
+import { Mode } from "../../../../App";
+import { getFormattedTime } from "../../../../utils/getFormattedTime";
 
 type StopwatchProps = {
     mode: Mode
