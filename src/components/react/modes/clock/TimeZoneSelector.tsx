@@ -24,7 +24,7 @@ export default function TimeZoneSelector({
             >
                 <option value={"yours"}>Yours</option>
 
-                {Object.keys(CITY_TIME_ZONES).map((city, i) => (
+                {Object.keys(CITY_TIME_ZONES).sort((a, b) => a.localeCompare(b)).map((city, i) => (
                     <option key={i} value={city}>{city}</option>
                 ))}
             </S_CitySelect>
