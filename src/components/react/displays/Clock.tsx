@@ -5,6 +5,7 @@ import TimeZoneSelector from "../TimeZoneSelector";
 import { S_ModeContainer } from "../../styled/modeContainer";
 import { Mode } from "../../../App";
 import { getFormattedTime } from "../../../utils/getFormattedTime";
+import { S_FetchingText } from "../../styled/fetchingText";
 
 type ClockProps = {
     mode: Mode
@@ -44,7 +45,7 @@ export default function Clock({ mode }: ClockProps) {
             />
 
             {isFetching ? (
-                <h2 style={{color:"white"}}>Fetching...</h2>
+                <S_FetchingText>Fetching...</S_FetchingText>
             ) : (
                 <TimeDisplay formattedTime={formattedTime} />
             )}

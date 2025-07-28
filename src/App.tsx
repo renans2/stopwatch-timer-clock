@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { ThemeProvider } from "styled-components";
 import Modes from "./components/react/Modes";
 import GlobalStyle from "./styles/GlobalStyle";
@@ -9,6 +8,7 @@ import Stopwatch from "./components/react/displays/Stopwatch";
 import Timer from "./components/react/displays/Timer";
 import { S_App } from "./components/styled/app";
 import MadeWithLove from "./components/react/MadeWithLove";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 export type Mode = "stopwatch" | "timer" | "clock";
 
@@ -19,9 +19,8 @@ export const order: Record<Mode, number> = {
 }
 
 function App() {
-    // const [running, setRunning] = useState(false);
-    const [mode, setMode] = useState<Mode>("clock");
-    const [isDarkTheme, setIsDarkTheme] = useState<boolean>(true);
+    const [isDarkTheme, setIsDarkTheme] = useLocalStorage<boolean>("isDarkTheme", true);
+    const [mode, setMode] = useLocalStorage<Mode>("mode", "clock");
 
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
