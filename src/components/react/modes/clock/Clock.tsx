@@ -18,6 +18,7 @@ export default function Clock({ show }: ClockProps) {
         setCity, 
         setCounter, 
     } = useTimeZone();
+    
     const idRef = useRef<number | undefined>(undefined);
 
     const formattedTime = getFormattedTime(counter);
@@ -30,9 +31,7 @@ export default function Clock({ show }: ClockProps) {
     useEffect(() => {
         idRef.current = setInterval(() => {
             setCounter(prev => {
-                if (prev + 1 === 24 * 3600)
-                    return 0
-
+                if (prev + 1 === 24 * 60 * 60) return 0;
                 return prev + 1;
             })
         }, 1000);

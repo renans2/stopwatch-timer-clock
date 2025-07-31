@@ -14,8 +14,8 @@ type StopwatchProps = {
 export default function Stopwatch({ show }: StopwatchProps) {
     const [counter, setCounter] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
-    const idRef = useRef<number | undefined>(undefined);
     const [checkpoints, setCheckpoints] = useState<Checkpoint[]>([]);
+    const idRef = useRef<number | undefined>(undefined);
 
     const formattedTime = getFormattedTime(counter);
 
