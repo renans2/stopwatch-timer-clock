@@ -80,7 +80,10 @@ export default function Stopwatch({ mode }: StopwatchProps) {
                 isRunning={isRunning}
             />
             
-            <TimeDisplay formattedTime={formattedTime} />
+            <TimeDisplay 
+                formattedTime={formattedTime}
+                isRunning={isRunning}
+            />
             
             <S_MarkCheckpointButton 
                 disabled={!isRunning} 

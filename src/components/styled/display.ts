@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const S_Display = styled.div`
+export const S_Display = styled.div<{ $isRunning?: boolean }>`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -11,4 +11,6 @@ export const S_Display = styled.div`
     padding: 0px 20px;
     color: ${({ theme }) => theme.colors.regularText};
     background-color: ${({ theme }) => theme.colors.regularBg};
+
+    opacity: ${({ $isRunning }) => $isRunning === false ? 0.5 : 1}
 `;

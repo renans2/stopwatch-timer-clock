@@ -80,7 +80,10 @@ export default function Timer({ mode }: TimerProps) {
                         isRunning={isRunning}
                     />
 
-                    <TimeDisplay formattedTime={formattedTime} />
+                    <TimeDisplay
+                        formattedTime={formattedTime}
+                        isRunning={isRunning}
+                    />
                 </>
             )}
         </S_ModeContainer>
