@@ -33,9 +33,9 @@ function App() {
                     setIsDarkTheme={setIsDarkTheme} 
                 />
 
-                <Clock     mode={mode} />
-                <Stopwatch mode={mode}/>
-                <Timer     mode={mode}/>
+                <Clock     show={mode === 'clock'} />
+                <Stopwatch show={mode === 'stopwatch'} />
+                <Timer     show={mode === 'timer'} />
 
                 <MadeWithLove />
             </S_App>

@@ -5,21 +5,19 @@ import { Checkpoint } from "../../../../types/Checkpoint";
 import CheckpointsList from "./CheckpointsList";
 import { S_MarkCheckpointButton } from "../../../styled/markCheckpointButton";
 import { S_ModeContainer } from "../../../styled/modeContainer";
-import { Mode } from "../../../../App";
 import { getFormattedTime } from "../../../../utils/getFormattedTime";
 
 type StopwatchProps = {
-    mode: Mode
+    show: boolean;
 }
 
-export default function Stopwatch({ mode }: StopwatchProps) {
+export default function Stopwatch({ show }: StopwatchProps) {
     const [counter, setCounter] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const idRef = useRef<number | undefined>(undefined);
     const [checkpoints, setCheckpoints] = useState<Checkpoint[]>([]);
 
     const formattedTime = getFormattedTime(counter);
-    const show = mode === "stopwatch";
 
     if (show) {
         document.title = `Stopwatch: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;

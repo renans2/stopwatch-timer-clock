@@ -3,15 +3,14 @@ import TimeDisplay from "../../TimeDisplay";
 import useTimeZone from "../../../../hooks/useTimeZone";
 import TimeZoneSelector from "./TimeZoneSelector";
 import { S_ModeContainer } from "../../../styled/modeContainer";
-import { Mode } from "../../../../App";
 import { getFormattedTime } from "../../../../utils/getFormattedTime";
 import { S_FetchingText } from "../../../styled/fetchingText";
 
 type ClockProps = {
-    mode: Mode
+    show: boolean;
 }
 
-export default function Clock({ mode }: ClockProps) {
+export default function Clock({ show }: ClockProps) {
     const { 
         city, 
         counter, 
@@ -22,7 +21,6 @@ export default function Clock({ mode }: ClockProps) {
     const idRef = useRef<number | undefined>(undefined);
 
     const formattedTime = getFormattedTime(counter);
-    const show = mode === "clock";
 
     if (show) {
         document.title = `${city === "yours" ? "Clock" : city}: 

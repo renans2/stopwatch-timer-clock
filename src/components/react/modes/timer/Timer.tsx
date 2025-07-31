@@ -3,21 +3,19 @@ import TimerSelector from "./TimerSelector";
 import TimeDisplay from "../../TimeDisplay";
 import TimerControlButtons from "./TimerControlButtons";
 import { S_ModeContainer } from "../../../styled/modeContainer";
-import { Mode } from "../../../../App";
 import { getFormattedTime } from "../../../../utils/getFormattedTime";
 
 type TimerProps = {
-    mode: Mode
+    show: boolean
 }
 
-export default function Timer({ mode }: TimerProps) {
+export default function Timer({ show }: TimerProps) {
     const [counter, setCounter] = useState(0);
     const [selecting, setSelecting] = useState(true);
     const [isRunning, setIsRunning] = useState(false);
     const idRef = useRef<number | undefined>(undefined);
     
     const formattedTime = getFormattedTime(counter);
-    const show = mode === "timer";
 
     if (show) {
         document.title = `Timer: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
