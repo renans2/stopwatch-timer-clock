@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import StopwatchControlButtons from "./StopwatchControlButtons";
-import TimeDisplay from "../timer/TimeDisplay";
+import TimeDisplay from "../../TimeDisplay";
 import { Checkpoint } from "../../../../types/Checkpoint";
 import CheckpointsList from "./CheckpointsList";
 import { S_MarkCheckpointButton } from "../../../styled/markCheckpointButton";

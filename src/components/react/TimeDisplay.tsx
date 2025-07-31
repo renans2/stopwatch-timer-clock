@@ -1,5 +1,5 @@
-import { FormattedTime } from "../../../../types/FormattedTime";
-import { S_Display } from "../../../styled/display";
+import { FormattedTime } from "../../types/FormattedTime";
+import { S_Display } from "../styled/display";
 
 type TimeDisplayProps = {
     formattedTime: FormattedTime;
