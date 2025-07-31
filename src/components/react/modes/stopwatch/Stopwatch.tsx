@@ -20,7 +20,7 @@ export default function Stopwatch({ show }: StopwatchProps) {
     const formattedTime = getFormattedTime(counter);
 
     if (show) {
-        document.title = `Stopwatch: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
+        document.title = `Stopwatch: ${formattedTime.hours}:${formattedTime.minutes}:${formattedTime.seconds}`;
     }
 
     useEffect(() => {

@@ -6,15 +6,15 @@ import ToggleThemeButton from "./ToggleThemeButton";
 
 type ModesProps = {
     mode: Mode;
-    setMode: Dispatch<SetStateAction<Mode>>;
     isDarkTheme: boolean;
+    setMode: Dispatch<SetStateAction<Mode>>;
     setIsDarkTheme: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function Modes({ 
     mode, 
-    setMode,
     isDarkTheme,
+    setMode,
     setIsDarkTheme,
 }: ModesProps) {
     return (

@@ -1,22 +1,22 @@
-import { FormattedTime } from "../../types/FormattedTime";
+import { FormattedTimeString } from "../../types/FormattedTimeString";
 import { S_Display } from "../styled/display";
 
 type TimeDisplayProps = {
-    formattedTime: FormattedTime;
+    formattedTime: FormattedTimeString;
     isRunning?: boolean;
 }
 
 export default function TimeDisplay({ 
-    formattedTime: { hoursStr, minutesStr, secondsStr },
+    formattedTime: { hours, minutes, seconds },
     isRunning,
 }: TimeDisplayProps) {
     return (        
         <S_Display $isRunning={isRunning}>
-            <span>{hoursStr}</span>
+            <span>{hours}</span>
             <span>:</span>
-            <span>{minutesStr}</span>
+            <span>{minutes}</span>
             <span>:</span>
-            <span>{secondsStr}</span>
+            <span>{seconds}</span>
         </S_Display>
     );
 }

@@ -24,7 +24,7 @@ export default function Clock({ show }: ClockProps) {
 
     if (show) {
         document.title = `${city === "yours" ? "Clock" : city}: 
-            ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
+            ${formattedTime.hours}:${formattedTime.minutes}:${formattedTime.seconds}`;
     }
 
     useEffect(() => {

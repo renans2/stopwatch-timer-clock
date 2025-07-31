@@ -18,7 +18,7 @@ export default function Timer({ show }: TimerProps) {
     const formattedTime = getFormattedTime(counter);
 
     if (show) {
-        document.title = `Timer: ${formattedTime.hoursStr}:${formattedTime.minutesStr}:${formattedTime.secondsStr}`;
+        document.title = `Timer: ${formattedTime.hours}:${formattedTime.minutes}:${formattedTime.seconds}`;
     }
 
     useEffect(() => {
